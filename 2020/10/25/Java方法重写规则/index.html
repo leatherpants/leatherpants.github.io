@@ -5,17 +5,17 @@
   
 
   
-  <title>Java负数取模 | Hexo</title>
+  <title>Java方法重写规则 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="终极结论：负数参与的取模运算规则：先忽略负号，按照正数运算之后，被取模的数是正数结果就取正，反之取负。（注：(-2)%5中被取模数是-2）  参考链接：CSDN：java 中负数取模">
+  <meta name="description" content="看《Head First Servlet &amp; JSP》的时候看到javax.servlet.http.HttpServlet类有  service(ServletRequest, ServletResponse) service(HttpServletRequest, HttpServletResponse)  两个方法，其中1.方法直接继承自父类，对2.方法是否叫重写产生了疑问。 经查，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java负数取模">
-<meta property="og:url" content="http://example.com/2020/10/20/Java%E8%B4%9F%E6%95%B0%E5%8F%96%E6%A8%A1/index.html">
+<meta property="og:title" content="Java方法重写规则">
+<meta property="og:url" content="http://example.com/2020/10/25/Java%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E8%A7%84%E5%88%99/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="终极结论：负数参与的取模运算规则：先忽略负号，按照正数运算之后，被取模的数是正数结果就取正，反之取负。（注：(-2)%5中被取模数是-2）  参考链接：CSDN：java 中负数取模">
+<meta property="og:description" content="看《Head First Servlet &amp; JSP》的时候看到javax.servlet.http.HttpServlet类有  service(ServletRequest, ServletResponse) service(HttpServletRequest, HttpServletResponse)  两个方法，其中1.方法直接继承自父类，对2.方法是否叫重写产生了疑问。 经查，">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-10-20T13:59:22.000Z">
-<meta property="article:modified_time" content="2020-10-20T15:28:24.642Z">
+<meta property="article:published_time" content="2020-10-25T12:15:34.000Z">
+<meta property="article:modified_time" content="2020-10-25T12:59:24.493Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -66,10 +66,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Java负数取模" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Java方法重写规则" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/10/20/Java%E8%B4%9F%E6%95%B0%E5%8F%96%E6%A8%A1/" class="article-date">
-  <time datetime="2020-10-20T13:59:22.000Z" itemprop="datePublished">2020-10-20</time>
+    <a href="/2020/10/25/Java%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E8%A7%84%E5%88%99/" class="article-date">
+  <time datetime="2020-10-25T12:15:34.000Z" itemprop="datePublished">2020-10-25</time>
 </a>
     
   </div>
@@ -80,7 +80,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Java负数取模
+      Java方法重写规则
     </h1>
   
 
@@ -88,14 +88,45 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>终极结论：负数参与的取模运算规则：先忽略负号，按照正数运算之后，被取模的数是正数结果就取正，反之取负。（注：(-2)%5中被取模数是-2）</p>
+        <p>看《Head First Servlet &amp; JSP》的时候看到<code>javax.servlet.http.HttpServlet</code>类有</p>
+<ol>
+<li><code>service(ServletRequest, ServletResponse)</code></li>
+<li><code>service(HttpServletRequest, HttpServletResponse)</code></li>
+</ol>
+<p>两个方法，其中1.方法直接继承自父类，对2.方法是否叫重写产生了疑问。</p>
+<p>经查，子类对父类方法的重写规则如下：</p>
+<ol>
+<li>签名相同（函数名和参数列表相同）</li>
+<li>返回值类型小于等于父类方法（类型相同或是子类）</li>
+<li>抛出异常类型小于等于父类方法</li>
+<li>访问权限大于等于父类方法</li>
+</ol>
+<p><code>service(HttpServletRequest, HttpServletResponse)</code>改变了方法签名，故为方法重载，而不是重写。</p>
 <hr>
-<p>参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37444478/article/details/77197870">CSDN：java 中负数取模</a></p>
+<p>顺便贴上重写和重载的区别：</p>
+<table>
+<thead>
+<tr>
+<th>重写（Overriding）</th>
+<th>重载（Overloading）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>方法名相同，参数列表不同（签名不同），不考虑修饰符和返回值类型。</td>
+<td>方法名和参数列表都相同（签名相同），修饰符和返回值要求见上。</td>
+</tr>
+<tr>
+<td>让同一个名字的方法可以作用于不同类型对象。</td>
+<td>对给定签名方法的实现逻辑不满意，进行覆盖。</td>
+</tr>
+</tbody></table>
+<hr>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/yldmkx/article/details/108918545">CSDN：Java中方法签名signature、方法重载以及“两同两小一大”的方法覆盖(方法重写)总结</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/20/Java%E8%B4%9F%E6%95%B0%E5%8F%96%E6%A8%A1/" data-id="ckgp4go6800010cnc2dyq4r8c" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/25/Java%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E8%A7%84%E5%88%99/" data-id="ckgp4go5s00000cnc7565d6u0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -104,19 +135,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/10/20/Java%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E5%BC%8F%E9%A1%BA%E5%BA%8F/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Java类初始化方式顺序
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/10/20/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/10/20/Java%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E5%BC%8F%E9%A1%BA%E5%BA%8F/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
+      <div class="article-nav-title">Java类初始化方式顺序</div>
     </a>
   
 </nav>

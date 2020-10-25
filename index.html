@@ -64,6 +64,76 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Java方法重写规则" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/25/Java%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E8%A7%84%E5%88%99/" class="article-date">
+  <time datetime="2020-10-25T12:15:34.000Z" itemprop="datePublished">2020-10-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/25/Java%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E8%A7%84%E5%88%99/">Java方法重写规则</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>看《Head First Servlet &amp; JSP》的时候看到<code>javax.servlet.http.HttpServlet</code>类有</p>
+<ol>
+<li><code>service(ServletRequest, ServletResponse)</code></li>
+<li><code>service(HttpServletRequest, HttpServletResponse)</code></li>
+</ol>
+<p>两个方法，其中1.方法直接继承自父类，对2.方法是否叫重写产生了疑问。</p>
+<p>经查，子类对父类方法的重写规则如下：</p>
+<ol>
+<li>签名相同（函数名和参数列表相同）</li>
+<li>返回值类型小于等于父类方法（类型相同或是子类）</li>
+<li>抛出异常类型小于等于父类方法</li>
+<li>访问权限大于等于父类方法</li>
+</ol>
+<p><code>service(HttpServletRequest, HttpServletResponse)</code>改变了方法签名，故为方法重载，而不是重写。</p>
+<hr>
+<p>顺便贴上重写和重载的区别：</p>
+<table>
+<thead>
+<tr>
+<th>重写（Overriding）</th>
+<th>重载（Overloading）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>方法名相同，参数列表不同（签名不同），不考虑修饰符和返回值类型。</td>
+<td>方法名和参数列表都相同（签名相同），修饰符和返回值要求见上。</td>
+</tr>
+<tr>
+<td>让同一个名字的方法可以作用于不同类型对象。</td>
+<td>对给定签名方法的实现逻辑不满意，进行覆盖。</td>
+</tr>
+</tbody></table>
+<hr>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/yldmkx/article/details/108918545">CSDN：Java中方法签名signature、方法重载以及“两同两小一大”的方法覆盖(方法重写)总结</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/25/Java%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E8%A7%84%E5%88%99/" data-id="ckgp4go5s00000cnc7565d6u0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Java类初始化方式顺序" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/10/20/Java%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E5%BC%8F%E9%A1%BA%E5%BA%8F/" class="article-date">
@@ -95,14 +165,14 @@
 <p>参考链接：</p>
 <ol>
 <li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1P54y1y7A4?p=131">B站马士兵Java教程</a></li>
-<li><a href="/2020/10/20/Java%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E5%BC%8F%E9%A1%BA%E5%BA%8F/core_java.png" title="Core Java 4.6.7 Initialization Blocks">Core Java 4.6.7 Initialization Blocks</a>
+<li><a href="/2020/10/20/Java%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E5%BC%8F%E9%A1%BA%E5%BA%8F/core_java.gif" title="Core Java 4.6.7 Initialization Blocks">Core Java 4.6.7 Initialization Blocks</a>
 </li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/20/Java%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E5%BC%8F%E9%A1%BA%E5%BA%8F/" data-id="ckgi4hegy000074ncd67w16o0" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/20/Java%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E5%BC%8F%E9%A1%BA%E5%BA%8F/" data-id="ckgp4go6800020cnc2uvgfahd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -141,7 +211,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/20/Java%E8%B4%9F%E6%95%B0%E5%8F%96%E6%A8%A1/" data-id="ckgi4hegy000174nc8lez5qd0" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/20/Java%E8%B4%9F%E6%95%B0%E5%8F%96%E6%A8%A1/" data-id="ckgp4go6800010cnc2dyq4r8c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -190,7 +260,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/20/hello-world/" data-id="ckgi4hegy000274nceax45z09" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/20/hello-world/" data-id="ckgp4go6800030cnc9g8i1zd3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -229,6 +299,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/10/25/Java%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E8%A7%84%E5%88%99/">Java方法重写规则</a>
+          </li>
         
           <li>
             <a href="/2020/10/20/Java%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E5%BC%8F%E9%A1%BA%E5%BA%8F/">Java类初始化方式顺序</a>
