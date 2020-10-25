@@ -92,9 +92,9 @@
 <li><code>service(HttpServletRequest, HttpServletResponse)</code></li>
 </ol>
 <p>两个方法，其中1.方法直接继承自父类，对2.方法是否叫重写产生了疑问。</p>
-<p>经查，子类对父类方法的重写规则如下：</p>
+<p>经查和实验，子类对父类方法的重写规则如下：</p>
 <ol>
-<li>签名相同（函数名和参数列表相同）</li>
+<li>签名相同，即函数名和参数列表相同（参数是子类也不行，必须类型相同）</li>
 <li>返回值类型小于等于父类方法（类型相同或是子类）</li>
 <li>抛出异常类型小于等于父类方法</li>
 <li>访问权限大于等于父类方法</li>
@@ -124,7 +124,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/25/Java%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E8%A7%84%E5%88%99/" data-id="ckgp4go5s00000cnc7565d6u0" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/25/Java%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E8%A7%84%E5%88%99/" data-id="ckgp4okyw0000gcnc2k4s0hxz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -172,7 +172,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/20/Java%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E5%BC%8F%E9%A1%BA%E5%BA%8F/" data-id="ckgp4go6800020cnc2uvgfahd" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/20/Java%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E5%BC%8F%E9%A1%BA%E5%BA%8F/" data-id="ckgp4okyw0002gcnc8o7f721h" class="article-share-link">Share</a>
       
       
     </footer>
@@ -211,7 +211,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/20/Java%E8%B4%9F%E6%95%B0%E5%8F%96%E6%A8%A1/" data-id="ckgp4go6800010cnc2dyq4r8c" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/20/Java%E8%B4%9F%E6%95%B0%E5%8F%96%E6%A8%A1/" data-id="ckgp4okyw0001gcnc9xzea3mu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -260,7 +260,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/20/hello-world/" data-id="ckgp4go6800030cnc9g8i1zd3" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/20/hello-world/" data-id="ckgp4okyw0003gcnc594f9676" class="article-share-link">Share</a>
       
       
     </footer>
