@@ -64,6 +64,117 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Servlet踩坑" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/28/Servlet%E8%B8%A9%E5%9D%91/" class="article-date">
+  <time datetime="2020-10-28T14:20:59.000Z" itemprop="datePublished">2020-10-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/28/Servlet%E8%B8%A9%E5%9D%91/">Servlet踩坑</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>web.xml文件内有拼写错误。此时服务器不会对该错误报错，而是不加载该配置文件，导致路径配置失效。</li>
+<li>如果ServletContext.getAttribute()找不到对应名字的attribute，将返回null，从而可能引发NullPointerException。比如listener未成功注册并setAttribute()。</li>
+<li>如果ServletContext.getInitParameter()在web.xml中找不到对应名字的parameter，也将返回null。比如param-name拼写错误或两个文件中拼写不同。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/28/Servlet%E8%B8%A9%E5%9D%91/" data-id="ckgthz4m90005zsnc3h8tf8nd" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java多线程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/25/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/" class="article-date">
+  <time datetime="2020-10-25T15:06:24.000Z" itemprop="datePublished">2020-10-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/25/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/">Java多线程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>多任务</td>
+<td>multitasking</td>
+<td>多工处里的概念</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>多进程</td>
+<td>multiple processes</td>
+<td>多工实现方式之一</td>
+<td>每个进程有独立的变量集</td>
+<td>较复杂</td>
+</tr>
+<tr>
+<td>多线程</td>
+<td>multithreading</td>
+<td>多工实现方式之二</td>
+<td>各线程共享同一变量集</td>
+<td>较轻量</td>
+</tr>
+</tbody></table>
+<p>一个对象实例，一组变量集，多个线程调用、共享</p>
+<p>Servlet就是多线程，一个Servlet实例，多个线程分别调用doGet()或doPost()</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/25/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/" data-id="ckgthz4m10000zsnc0ahw96dj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Java方法重写规则" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/10/25/Java%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E8%A7%84%E5%88%99/" class="article-date">
@@ -124,7 +235,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/25/Java%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E8%A7%84%E5%88%99/" data-id="ckgp4okyw0000gcnc2k4s0hxz" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/25/Java%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E8%A7%84%E5%88%99/" data-id="ckgthz4m70002zsnchmb66cpg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -172,7 +283,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/20/Java%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E5%BC%8F%E9%A1%BA%E5%BA%8F/" data-id="ckgp4okyw0002gcnc8o7f721h" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/20/Java%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E5%BC%8F%E9%A1%BA%E5%BA%8F/" data-id="ckgthz4m60001zsnc4nx1727h" class="article-share-link">Share</a>
       
       
     </footer>
@@ -211,7 +322,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/20/Java%E8%B4%9F%E6%95%B0%E5%8F%96%E6%A8%A1/" data-id="ckgp4okyw0001gcnc9xzea3mu" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/20/Java%E8%B4%9F%E6%95%B0%E5%8F%96%E6%A8%A1/" data-id="ckgthz4m90004zsnc6w1fbdzh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -260,7 +371,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/20/hello-world/" data-id="ckgp4okyw0003gcnc594f9676" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/20/hello-world/" data-id="ckgthz4m80003zsncgv336xgc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -301,6 +412,14 @@
       <ul>
         
           <li>
+            <a href="/2020/10/28/Servlet%E8%B8%A9%E5%9D%91/">Servlet踩坑</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/25/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/">Java多线程</a>
+          </li>
+        
+          <li>
             <a href="/2020/10/25/Java%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E8%A7%84%E5%88%99/">Java方法重写规则</a>
           </li>
         
@@ -310,10 +429,6 @@
         
           <li>
             <a href="/2020/10/20/Java%E8%B4%9F%E6%95%B0%E5%8F%96%E6%A8%A1/">Java负数取模</a>
-          </li>
-        
-          <li>
-            <a href="/2020/10/20/hello-world/">Hello World</a>
           </li>
         
       </ul>
