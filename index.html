@@ -64,9 +64,9 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-Servlet踩坑" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Servlet小点和踩坑" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/10/28/Servlet%E8%B8%A9%E5%9D%91/" class="article-date">
+    <a href="/2020/10/28/Servlet%E5%B0%8F%E7%82%B9%E5%92%8C%E8%B8%A9%E5%9D%91/" class="article-date">
   <time datetime="2020-10-28T14:20:59.000Z" itemprop="datePublished">2020-10-28</time>
 </a>
     
@@ -78,7 +78,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/28/Servlet%E8%B8%A9%E5%9D%91/">Servlet踩坑</a>
+      <a class="article-title" href="/2020/10/28/Servlet%E5%B0%8F%E7%82%B9%E5%92%8C%E8%B8%A9%E5%9D%91/">Servlet踩坑</a>
     </h1>
   
 
@@ -86,16 +86,32 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol>
+        <h2 id="小点"><a href="#小点" class="headerlink" title="小点"></a>小点</h2><ol>
+<li>DD（Deployment Descripter）中的listener定义顺序决定了唤醒顺序（… the container uses the DD to determine the notification order of registered listeners.）</li>
+<li>if your servlet uses an RequestDispatcher, it can never send its own response, even after forward().</li>
+<li><img src="/2020/10/28/Servlet%E5%B0%8F%E7%82%B9%E5%92%8C%E8%B8%A9%E5%9D%91/attributes_vs_parameters.gif" class="" title="[Attributes vs. Parameters]"></li>
+<li>Session migration只转移继承了Serializable的变量，但不使用Serialization标准，即不调用Serializable接口的readObject和writeObject方法以对变量的非Serializable成员变量进行处理，因此SessionAttribute必须继承HttpSessionActivationListener对所有非Serializable内容进行处理。</li>
+<li><code>Your number is &lt;c:out value=”$&#123;user.phone&#125;”/&gt;</code> is valid, and is non-standard action. jps:xxx is standard action, others are not. EL inside action is valid.</li>
+</ol>
+<hr>
+<h2 id="疑问点"><a href="#疑问点" class="headerlink" title="疑问点"></a>疑问点</h2><ol>
+<li>The servlet to which a request is forwarded may access the original query string by calling getQueryString() on the HttpServletRequest. It is incorrect because this method returns the query string on the URL pattern from the RequestDispatcher.</li>
+<li>The servlet to which a request is forwarded may access the original query string by calling getAttribute(“javax. servlet.forward.query_string”) on the ServletRequest.</li>
+<li>In attributeReplaced() the getValue method returns the OLD value of the attribute if the attribute was replaced</li>
+<li>HttpSession只有getAttribute()，没有getContextPath()和getCookies()</li>
+</ol>
+<hr>
+<h2 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h2><ol>
 <li>web.xml文件内有拼写错误。此时服务器不会对该错误报错，而是不加载该配置文件，导致路径配置失效。</li>
 <li>如果ServletContext.getAttribute()找不到对应名字的attribute，将返回null，从而可能引发NullPointerException。比如listener未成功注册并setAttribute()。</li>
 <li>如果ServletContext.getInitParameter()在web.xml中找不到对应名字的parameter，也将返回null。比如param-name拼写错误或两个文件中拼写不同。</li>
+<li>ServletContext.getRequestDispatcher() 和 HttpServletRequest.getRequestDispatcher() 都可以获得dispatcher，但实参即路径要求不同，前者要求绝对路径（/开头），后者是/起始的相对路径（不加/）。</li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/28/Servlet%E8%B8%A9%E5%9D%91/" data-id="ckgthz4m90005zsnc3h8tf8nd" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/28/Servlet%E5%B0%8F%E7%82%B9%E5%92%8C%E8%B8%A9%E5%9D%91/" data-id="ckhkphvfd0005wsncedby4adg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -165,7 +181,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/25/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/" data-id="ckgthz4m10000zsnc0ahw96dj" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/25/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/" data-id="ckhkphvex0000wsnc42ay7vaj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -235,7 +251,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/25/Java%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E8%A7%84%E5%88%99/" data-id="ckgthz4m70002zsnchmb66cpg" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/25/Java%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E8%A7%84%E5%88%99/" data-id="ckhkphvfd0003wsncc05a1at8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -283,7 +299,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/20/Java%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E5%BC%8F%E9%A1%BA%E5%BA%8F/" data-id="ckgthz4m60001zsnc4nx1727h" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/20/Java%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E5%BC%8F%E9%A1%BA%E5%BA%8F/" data-id="ckhkphvfd0001wsnc0yobdvlv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -322,7 +338,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/20/Java%E8%B4%9F%E6%95%B0%E5%8F%96%E6%A8%A1/" data-id="ckgthz4m90004zsnc6w1fbdzh" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/20/Java%E8%B4%9F%E6%95%B0%E5%8F%96%E6%A8%A1/" data-id="ckhkphvfd0002wsncb6xbc0go" class="article-share-link">Share</a>
       
       
     </footer>
@@ -371,7 +387,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/20/hello-world/" data-id="ckgthz4m80003zsncgv336xgc" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/20/hello-world/" data-id="ckhkphvfd0004wsnc0177hgv7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -412,7 +428,7 @@
       <ul>
         
           <li>
-            <a href="/2020/10/28/Servlet%E8%B8%A9%E5%9D%91/">Servlet踩坑</a>
+            <a href="/2020/10/28/Servlet%E5%B0%8F%E7%82%B9%E5%92%8C%E8%B8%A9%E5%9D%91/">Servlet踩坑</a>
           </li>
         
           <li>
