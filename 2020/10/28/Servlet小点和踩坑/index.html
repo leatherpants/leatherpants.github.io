@@ -16,7 +16,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2020/10/28/Servlet%E5%B0%8F%E7%82%B9%E5%92%8C%E8%B8%A9%E5%9D%91/attributes_vs_parameters.gif">
 <meta property="article:published_time" content="2020-10-28T14:20:59.000Z">
-<meta property="article:modified_time" content="2020-11-15T15:54:01.702Z">
+<meta property="article:modified_time" content="2020-11-22T08:28:11.664Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2020/10/28/Servlet%E5%B0%8F%E7%82%B9%E5%92%8C%E8%B8%A9%E5%9D%91/attributes_vs_parameters.gif">
@@ -96,6 +96,14 @@
 <li><img src="/2020/10/28/Servlet%E5%B0%8F%E7%82%B9%E5%92%8C%E8%B8%A9%E5%9D%91/attributes_vs_parameters.gif" class="" title="[Attributes vs. Parameters]"></li>
 <li>Session migration只转移继承了Serializable的变量，但不使用Serialization标准，即不调用Serializable接口的readObject和writeObject方法以对变量的非Serializable成员变量进行处理，因此SessionAttribute必须继承HttpSessionActivationListener对所有非Serializable内容进行处理。</li>
 <li><code>Your number is &lt;c:out value=”$&#123;user.phone&#125;”/&gt;</code> is valid, and is non-standard action. jps:xxx is standard action, others are not. EL inside action is valid.</li>
+<li><a href="jsp:useBean">jsp:useBean</a>中的type可以自动识别attribute的实际类型并进行cast。比如：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Person p = <span class="keyword">new</span> Employee();</span><br><span class="line">request.setAttribute(<span class="string">&quot;person&quot;</span>, p);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp:useBean id&#x3D;&quot;person&quot; type&#x3D;&quot;employee&quot; scope&#x3D;&quot;request&quot; &#x2F;&gt;</span><br></pre></td></tr></table></figure>
+不会报类型转换错误。而如果是普通java代码，必须进行显示cast，否则报错。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Person p = <span class="keyword">new</span> Employee();</span><br><span class="line">Employee e = (Employee) p;</span><br></pre></td></tr></table></figure></li>
+<li><a href="jsp:useBean">jsp:useBean</a>中的type和class可以都有或者二选一，同时没有将报错：missing type。</li>
+<li>TLD says, “This is the Java class, this is the method signature for the function <strong>(including return type)</strong> and this is the name we’ll use in EL expressions”.</li>
+<li>EL ${} 里面不能使用括号()</li>
+<li>EL ${} 的String和数字coarse，只对Array的index可以String自动转int，对Map不可用，普通计算中也不可用，同时int也不能转String。</li>
+<li>${attribute.property}如果attribute不存在，将返回null，如果property不存在，将报错。如同，如果map.get(key)中key不存在，将返回null，如果map.add(value)将报错（map没有add方法，只有put）。</li>
 </ol>
 <hr>
 <h2 id="疑问点"><a href="#疑问点" class="headerlink" title="疑问点"></a>疑问点</h2><ol>
@@ -115,7 +123,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/28/Servlet%E5%B0%8F%E7%82%B9%E5%92%8C%E8%B8%A9%E5%9D%91/" data-id="ckhkphvfd0005wsncedby4adg" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/28/Servlet%E5%B0%8F%E7%82%B9%E5%92%8C%E8%B8%A9%E5%9D%91/" data-id="cki4mwn6g0004h0nc1paj5zqb" class="article-share-link">Share</a>
       
       
     </footer>
