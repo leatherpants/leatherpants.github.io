@@ -100,6 +100,8 @@
 <li>EL ${} 里面不能使用括号()</li>
 <li>EL ${} 的String和数字coarse，只对Array的index可以String自动转int，对Map不可用，普通计算中也不可用，同时int也不能转String。</li>
 <li>${attribute.property}如果attribute不存在，将返回null，如果property不存在，将报错。如同，如果map.get(key)中key不存在，将返回null，如果map.add(value)将报错（map没有add方法，只有put）。</li>
+<li>tld有问题会404</li>
+<li>jsp里调用custom tag时attribute类型会自动向setter的参数类型转换，转换失败将报错。tld里的type没卵用，只是告诉tld读者这里应该是某种类型，对jsp调用时填错类型没有任何实质性的帮助。</li>
 </ol>
 <hr>
 <h2 id="疑问点"><a href="#疑问点" class="headerlink" title="疑问点"></a>疑问点</h2><ol>
@@ -119,7 +121,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/28/Servlet%E5%B0%8F%E7%82%B9%E5%92%8C%E8%B8%A9%E5%9D%91/" data-id="cki4mwn6g0004h0nc1paj5zqb" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/28/Servlet%E5%B0%8F%E7%82%B9%E5%92%8C%E8%B8%A9%E5%9D%91/" data-id="cki4potdy0003jgnc10jw6chj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -189,7 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/25/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/" data-id="cki4mwn600000h0ncgo6j94yk" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/25/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/" data-id="cki4potdy0000jgnc6hzvgdom" class="article-share-link">Share</a>
       
       
     </footer>
@@ -259,7 +261,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/25/Java%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E8%A7%84%E5%88%99/" data-id="cki4mwn600001h0nc2bqcagdk" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/25/Java%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E8%A7%84%E5%88%99/" data-id="cki4potdy0001jgnc51pm6cbv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -307,7 +309,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/20/Java%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E5%BC%8F%E9%A1%BA%E5%BA%8F/" data-id="cki4mwn600002h0nc7o951fke" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/20/Java%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E5%BC%8F%E9%A1%BA%E5%BA%8F/" data-id="cki4potdy0002jgncgunfdpi5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -346,7 +348,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/20/Java%E8%B4%9F%E6%95%B0%E5%8F%96%E6%A8%A1/" data-id="cki4mwn600003h0nccyeyesef" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/20/Java%E8%B4%9F%E6%95%B0%E5%8F%96%E6%A8%A1/" data-id="cki4potdy0004jgnc81aahnve" class="article-share-link">Share</a>
       
       
     </footer>
@@ -395,7 +397,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/20/hello-world/" data-id="cki4mwn6g0005h0nc4rbz50os" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/20/hello-world/" data-id="cki4potdy0005jgnc3sjj3kss" class="article-share-link">Share</a>
       
       
     </footer>
