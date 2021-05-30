@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2021/5 | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2021/05/index.html">
+<meta property="og:url" content="http://example.com/page/2/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="John Doe">
@@ -132,155 +132,215 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Java方法重写规则" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/25/Java%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E8%A7%84%E5%88%99/">Java方法重写规则</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/25/Java%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E8%A7%84%E5%88%99/" class="archive-article-date">
+  	<time datetime="2020-10-25T10:15:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-25</time>
+</a>
+        
+      </header>
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>看《Head First Servlet &amp; JSP》的时候看到<code>javax.servlet.http.HttpServlet</code>类有</p>
+<ol>
+<li><code>service(ServletRequest, ServletResponse)</code></li>
+<li><code>service(HttpServletRequest, HttpServletResponse)</code></li>
+</ol>
+<p>两个方法，其中1.方法直接继承自父类，对2.方法是否叫重写产生了疑问。</p>
+        
+          <a class="article-more-a" href="/2020/10/25/Java%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E8%A7%84%E5%88%99/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/25/Java%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E8%A7%84%E5%88%99/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="archives">
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Java类初始化方式顺序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/05/30/%E4%BD%BF%E7%94%A8PicGo-Github%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/" class="archive-article-date">
-  	<time datetime="2021-05-30T12:54:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-30</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/05/30/%E4%BD%BF%E7%94%A8PicGo-Github%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/">使用PicGo+Github搭建图床</a>
+      <a class="article-title" href="/2020/10/20/Java%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E5%BC%8F%E9%A1%BA%E5%BA%8F/">Java类初始化方式顺序</a>
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
+        
+        <a href="/2020/10/20/Java%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E5%BC%8F%E9%A1%BA%E5%BA%8F/" class="archive-article-date">
+  	<time datetime="2020-10-20T13:13:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>静态块（只在类加载的时候执行一次，因此一般创建工厂、数据库初始化都放入静态块，一般用于执行一些全局性的初始化操作</li>
+<li>成员变量默认值初始化/构造块（不常用）按照代码出现先后顺序</li>
+<li>构造器</li>
+</ol>
+        
+          <a class="article-more-a" href="/2020/10/20/Java%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E5%BC%8F%E9%A1%BA%E5%BA%8F/#more">more >></a>
+        
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/20/Java%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E5%BC%8F%E9%A1%BA%E5%BA%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/05/30/Hexo%E9%85%8D%E7%BD%AELaTex/" class="archive-article-date">
-  	<time datetime="2021-05-30T12:15:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-30</time>
-</a>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Java负数取模" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/05/30/Hexo%E9%85%8D%E7%BD%AELaTex/">Hexo配置LaTex</a>
+      <a class="article-title" href="/2020/10/20/Java%E8%B4%9F%E6%95%B0%E5%8F%96%E6%A8%A1/">Java负数取模</a>
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/05/30/CSAPP-C5/" class="archive-article-date">
-  	<time datetime="2021-05-30T11:29:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-30</time>
+        
+        <a href="/2020/10/20/Java%E8%B4%9F%E6%95%B0%E5%8F%96%E6%A8%A1/" class="archive-article-date">
+  	<time datetime="2020-10-20T11:59:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-20</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/05/30/CSAPP-C5/">CSAPP-C5</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>终极结论：负数参与的取模运算规则：先忽略负号，按照正数运算之后，被取模的数是正数结果就取正，反之取负。（注：(-2)%5中被取模数是-2）</p>
+<hr>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37444478/article/details/77197870">CSDN：java 中负数取模</a></p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/20/Java%E8%B4%9F%E6%95%B0%E5%8F%96%E6%A8%A1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/05/16/CSAPP-C4/" class="archive-article-date">
-  	<time datetime="2021-05-16T02:27:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-16</time>
-</a>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/05/16/CSAPP-C4/">CSAPP-C4</a>
-    </h1>
-  
+        
+        
+    </div>
+</aside>
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/05/02/CSAPP-C3/" class="archive-article-date">
-  	<time datetime="2021-05-02T09:14:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/05/02/CSAPP-C3/">CSAPP-C3</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </nav>
   
-
-    
 
 
           </div>
@@ -302,9 +362,9 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: false,
+		isHome: true,
 		isPost: false,
-		isArchive: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
