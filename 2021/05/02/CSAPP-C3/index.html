@@ -6,15 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2021/4 | Hexo</title>
+  <title>CSAPP-C3 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2021/04/index.html">
+  <meta name="description" content="3.1 Historical Perspective3.2 Program Encodingsgcc -Og to generate machine code with lowest level optimization for learning, while -O1 or -O2 are higher level optimizations and better choice for real">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSAPP-C3">
+<meta property="og:url" content="http://example.com/2021/05/02/CSAPP-C3/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="3.1 Historical Perspective3.2 Program Encodingsgcc -Og to generate machine code with lowest level optimization for learning, while -O1 or -O2 are higher level optimizations and better choice for real">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://camo.githubusercontent.com/316871c640e9c0f04e92a63ee6152add002e25255c4618ccbe4a42b1b5794072/68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f6e455337334866384642705f7a5745683238656c324277615775615950797a6841614155785477674a773d773537382d683933372d6e6f">
+<meta property="article:published_time" content="2021-05-02T09:14:06.000Z">
+<meta property="article:modified_time" content="2021-05-30T11:25:09.769Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://camo.githubusercontent.com/316871c640e9c0f04e92a63ee6152add002e25255c4618ccbe4a42b1b5794072/68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f6e455337334866384642705f7a5745683238656c324277615775615950797a6841614155785477674a773d773537382d683933372d6e6f">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -130,49 +136,1319 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-CSAPP-C3" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/06/CSAPP-C2/" class="archive-article-date">
-  	<time datetime="2021-04-05T14:15:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-06</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/06/CSAPP-C2/">CSAPP-C2</a>
+    <h1 class="article-title" itemprop="name">
+      CSAPP-C3
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
+        
+        <a href="/2021/05/02/CSAPP-C3/" class="archive-article-date">
+  	<time datetime="2021-05-02T09:14:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="3-1-Historical-Perspective"><a href="#3-1-Historical-Perspective" class="headerlink" title="3.1 Historical Perspective"></a>3.1 Historical Perspective</h2><h2 id="3-2-Program-Encodings"><a href="#3-2-Program-Encodings" class="headerlink" title="3.2 Program Encodings"></a>3.2 Program Encodings</h2><p>gcc -Og to generate machine code with lowest level optimization for learning, while -O1 or -O2 are higher level optimizations and better choice for real work.</p>
+<p>preprocessor-&gt;compiler-&gt;assembler-&gt;linker</p>
+<h3 id="3-2-1-Machine-Level-Code"><a href="#3-2-1-Machine-Level-Code" class="headerlink" title="3.2.1 Machine-Level Code"></a>3.2.1 Machine-Level Code</h3><p>Two abstractions:</p>
+<a id="more"></a>
+<ol>
+<li>ISA - instruction set architecture, abstract instructions as sequential, while processor actually works concurrently.</li>
+<li>Virtual addresses</li>
+</ol>
+<p>Things exposed in machine code but not in source code:</p>
+<ul>
+<li>program counter</li>
+<li>register file</li>
+<li>condition code registers</li>
+<li>vector registers</li>
+</ul>
+<p>program memory</p>
+<h3 id="3-2-2-Code-Examples"><a href="#3-2-2-Code-Examples" class="headerlink" title="3.2.2 Code Examples"></a>3.2.2 Code Examples</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>gcc -S</th>
+<th>show assembly code generated by compiler</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gcc -C</td>
+<td>gcc will both compile and assemble the code (not executable, need linker)</td>
+</tr>
+<tr>
+<td>objdump -d</td>
+<td>disassembler, containing both hexadecimal and assembly code</td>
+</tr>
+<tr>
+<td>(gdb) x/14xb multstore</td>
+<td>pure byte representation</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="3-2-3-Notes-on-Formatting"><a href="#3-2-3-Notes-on-Formatting" class="headerlink" title="3.2.3 Notes on Formatting"></a>3.2.3 Notes on Formatting</h3><h2 id="3-3-Data-Formats"><a href="#3-3-Data-Formats" class="headerlink" title="3.3 Data Formats"></a>3.3 Data Formats</h2><p>Sizes of C data types in x86-64:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>C declaration</th>
+<th>Intel data type</th>
+<th>Assembly-code suffix</th>
+<th>Size (bytes)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>char</td>
+<td>Byte</td>
+<td>b</td>
+<td>1</td>
+</tr>
+<tr>
+<td>short</td>
+<td>Word</td>
+<td>w</td>
+<td>2</td>
+</tr>
+<tr>
+<td>int</td>
+<td>Double word</td>
+<td>l</td>
+<td>4</td>
+</tr>
+<tr>
+<td>long</td>
+<td>Quad word</td>
+<td>q</td>
+<td>8</td>
+</tr>
+<tr>
+<td>char *</td>
+<td>Quad word</td>
+<td>q</td>
+<td>8</td>
+</tr>
+<tr>
+<td>float</td>
+<td>Single precision</td>
+<td>s</td>
+<td>4</td>
+</tr>
+<tr>
+<td>double</td>
+<td>Double precision</td>
+<td>l</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="3-4-Accessing-Information"><a href="#3-4-Accessing-Information" class="headerlink" title="3.4 Accessing Information"></a>3.4 Accessing Information</h2><p>16 general-purpose 64-bit registers</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>64</th>
+<th>32</th>
+<th>16</th>
+<th>8</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%rax</td>
+<td>%eax</td>
+<td>%ax</td>
+<td>%al</td>
+<td>Return value</td>
+</tr>
+<tr>
+<td>%rbx</td>
+<td>%ebx</td>
+<td>%bx</td>
+<td>%bl</td>
+<td>Callee saved</td>
+</tr>
+<tr>
+<td>%rcx</td>
+<td>%ecx</td>
+<td>%cx</td>
+<td>%cl</td>
+<td>4th argument</td>
+</tr>
+<tr>
+<td>%rdx</td>
+<td>%edx</td>
+<td>%dx</td>
+<td>%dl</td>
+<td>3rd argument</td>
+</tr>
+<tr>
+<td>%rsi</td>
+<td>%esi</td>
+<td>%si</td>
+<td>%sil</td>
+<td>2nd argument</td>
+</tr>
+<tr>
+<td>%rdi</td>
+<td>%edi</td>
+<td>%di</td>
+<td>%dil</td>
+<td>1st argument</td>
+</tr>
+<tr>
+<td>%rbp</td>
+<td>%ebp</td>
+<td>%bp</td>
+<td>%bpl</td>
+<td>Callee saved</td>
+</tr>
+<tr>
+<td>%rsp</td>
+<td>%esp</td>
+<td>%sp</td>
+<td>%spl</td>
+<td>Stack pointer</td>
+</tr>
+<tr>
+<td>%r8</td>
+<td>%r8d</td>
+<td>%r8w</td>
+<td>%r8b</td>
+<td>5th argument</td>
+</tr>
+<tr>
+<td>%r9</td>
+<td>%r9d</td>
+<td>%r9w</td>
+<td>%r9b</td>
+<td>6th argument</td>
+</tr>
+<tr>
+<td>%r10</td>
+<td>%r10d</td>
+<td>%r10w</td>
+<td>%r10b</td>
+<td>Caller saved</td>
+</tr>
+<tr>
+<td>%r11</td>
+<td>%r11d</td>
+<td>%r11w</td>
+<td>%r11b</td>
+<td>Caller saved</td>
+</tr>
+<tr>
+<td>%r12</td>
+<td>%r12d</td>
+<td>%r12w</td>
+<td>%r12b</td>
+<td>Callee saved</td>
+</tr>
+<tr>
+<td>%r13</td>
+<td>%r13d</td>
+<td>%r13w</td>
+<td>%r13b</td>
+<td>Callee saved</td>
+</tr>
+<tr>
+<td>%r14</td>
+<td>%r14d</td>
+<td>%r14w</td>
+<td>%r14b</td>
+<td>Callee saved</td>
+</tr>
+<tr>
+<td>%r15</td>
+<td>%r15d</td>
+<td>%r15w</td>
+<td>%r15b</td>
+<td>Callee saved</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>(<strong>Figure 3.2</strong> x86-64 Integer registers)</p>
+<h3 id="3-4-1-Operand-Specifiers"><a href="#3-4-1-Operand-Specifiers" class="headerlink" title="3.4.1 Operand Specifiers"></a>3.4.1 Operand Specifiers</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Form</th>
+<th>Operand value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Immediate</td>
+<td>$Imm</td>
+<td>Imm</td>
+</tr>
+<tr>
+<td>Register</td>
+<td>$r_a$</td>
+<td>$R[r_a]$</td>
+</tr>
+<tr>
+<td>Memory<br>(Effective address)</td>
+<td>$Imm(r_b,r_i,s)$</td>
+<td>$M[Imm+R[r_b]+R[r_i]*s]$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>NOTE:</strong> Memory references in x86-64 are always given with quad word registers, such as %rax</p>
+<h3 id="3-4-2-Data-Movement-Instructions"><a href="#3-4-2-Data-Movement-Instructions" class="headerlink" title="3.4.2 Data Movement Instructions"></a>3.4.2 Data Movement Instructions</h3><h4 id="Simple-move"><a href="#Simple-move" class="headerlink" title="Simple move"></a>Simple move</h4><p>immediate/register/memory -&gt; register/memory</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Instruction</th>
+<th>Effect</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mov  S,D</td>
+<td>D←S</td>
+<td>Move</td>
+</tr>
+<tr>
+<td>movb</td>
+<td></td>
+<td>Move byte</td>
+</tr>
+<tr>
+<td>movw</td>
+<td></td>
+<td>Move word</td>
+</tr>
+<tr>
+<td>movl</td>
+<td></td>
+<td>Move double word</td>
+</tr>
+<tr>
+<td>movq</td>
+<td></td>
+<td>Move quad word</td>
+</tr>
+<tr>
+<td>movabsq  I,R</td>
+<td>R←I</td>
+<td>Move absolute quad word</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>(Figure 3.4)</p>
+<p>movl will set the high-order 4 bytes of the quad word destination register to 0.</p>
+<p>Why movabsq : The regular movq instruction can only have  32-bit two’s-complement immediate source operands.</p>
+<p><strong>NOTE:</strong> Cannot have both source and destination be memory references. (Copying a value from one memory location to another requires two instructions)</p>
+<h4 id="Signed-move"><a href="#Signed-move" class="headerlink" title="Signed move"></a>Signed move</h4><p>register/memory -&gt; register</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Instruction</th>
+<th>Effect</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>movz  S,R</td>
+<td>R ← ZeroExtend(S)</td>
+<td>Move with zero extension</td>
+</tr>
+<tr>
+<td>movzbw</td>
+<td></td>
+<td>Move zero-extended byte to word</td>
+</tr>
+<tr>
+<td>movzbl</td>
+<td></td>
+<td>Move zero-extended byte to double word</td>
+</tr>
+<tr>
+<td>movzwl</td>
+<td></td>
+<td>Move zero-extended word to double word</td>
+</tr>
+<tr>
+<td>movzbq</td>
+<td></td>
+<td>Move zero-extended byte to quad word</td>
+</tr>
+<tr>
+<td>movzwq</td>
+<td></td>
+<td>Move zero-extended word to quad word</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>(Figure 3.5, note there is no movzlq)</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Instruction</th>
+<th>Effect</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>movs S, R</td>
+<td>R ← SignExtend(S)</td>
+<td>Move with sign extension</td>
+</tr>
+<tr>
+<td>movsbw</td>
+<td></td>
+<td>Move sign-extended byte to word</td>
+</tr>
+<tr>
+<td>movsbl</td>
+<td></td>
+<td>Move sign-extended byte to word</td>
+</tr>
+<tr>
+<td>movswl</td>
+<td></td>
+<td>Move sign-extended byte to word</td>
+</tr>
+<tr>
+<td>movsbq</td>
+<td></td>
+<td>Move sign-extended byte to word</td>
+</tr>
+<tr>
+<td>movswq</td>
+<td></td>
+<td>Move sign-extended word to quad word</td>
+</tr>
+<tr>
+<td>movslq</td>
+<td></td>
+<td>Move sign-extended double word to quad word</td>
+</tr>
+<tr>
+<td>cltq</td>
+<td>%rax ← SignExtend(%eax)</td>
+<td>Sign-extend %eax to %rax</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>(Figure 3.6)</p>
+<h3 id="3-4-3-Data-Movement-Example"><a href="#3-4-3-Data-Movement-Example" class="headerlink" title="3.4.3 Data Movement Example"></a>3.4.3 Data Movement Example</h3><p><strong>char -&gt; unsigned</strong></p>
+<ol>
+<li>movsbl // sign-extended to int first</li>
+<li>movl     // store</li>
+</ol>
+<p>the same as char -&gt; int -&gt; unsigned</p>
+<p><strong>int -&gt; char</strong></p>
+<ol>
+<li>movl // copy wholly</li>
+<li>movb // cut then</li>
+</ol>
+<h3 id="3-4-4-Pushing-and-Popping-Stack-Data"><a href="#3-4-4-Pushing-and-Popping-Stack-Data" class="headerlink" title="3.4.4 Pushing and Popping Stack Data"></a>3.4.4 Pushing and Popping Stack Data</h3><p>pushq S and popq D</p>
+<p>Stack is a piece of memory, which top is at low address side, mark as %rsp.</p>
+<p>Stack grows reversely, when push values into stack, %rsp reduces.</p>
+<h2 id="3-5-Arithmetic-and-Logical-Operations"><a href="#3-5-Arithmetic-and-Logical-Operations" class="headerlink" title="3.5 Arithmetic and Logical Operations"></a>3.5 Arithmetic and Logical Operations</h2><p>Four groups: load effective address, unary, binary, and shifts.</p>
+<p>Each has variants for b, w, l, q respectively.</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Instruction</th>
+<th>Effect</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>leaq  S, D</td>
+<td>D ← &amp;S</td>
+<td>Load effective address</td>
+</tr>
+<tr>
+<td>IMUL S,D</td>
+<td>D ← D*S</td>
+<td></td>
+</tr>
+<tr>
+<td>SAL  k,D</td>
+<td>D ← D&lt;&lt;k</td>
+<td>Left shift</td>
+</tr>
+<tr>
+<td>SHL  k,D</td>
+<td>D ← D&lt;&lt;k</td>
+<td>Left shift (same as SAL)</td>
+</tr>
+<tr>
+<td>SAR  k,D</td>
+<td>D ← D&gt;&gt;(A)k</td>
+<td>Arithmetic right shift</td>
+</tr>
+<tr>
+<td>SHR  k,D</td>
+<td>D ← D&gt;&gt;(L)k</td>
+<td>Logical right shift</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>(Figure 3.10)</p>
+<h3 id="3-5-1-Load-Effective-Address"><a href="#3-5-1-Load-Effective-Address" class="headerlink" title="3.5.1  Load Effective Address"></a>3.5.1  Load Effective Address</h3><p>Reads memory address to a register.</p>
+<p>Can be used for simple addition and multiplication.</p>
+<h3 id="3-5-2-Unary-and-Binary-Operations"><a href="#3-5-2-Unary-and-Binary-Operations" class="headerlink" title="3.5.2 Unary and Binary Operations"></a>3.5.2 Unary and Binary Operations</h3><p><strong>Unary:</strong> instruction (register/memory)</p>
+<p><strong>Binary:</strong>  instruction (immediate/register/memory), (register/memory)</p>
+<p>Two operands cannot both be memory locations, like mov.</p>
+<p>subq %rax, %rdx <strong>means</strong> rdx-rax -&gt; rdx</p>
+<h3 id="3-5-3-Shift-Operations"><a href="#3-5-3-Shift-Operations" class="headerlink" title="3.5.3 Shift Operations"></a>3.5.3 Shift Operations</h3><p>instruction (shift amount: immediate/%cl), (value to shift: register/memory) </p>
+<p>only reads lowest $log_2(b/w/l/q)$ bits of register %cl, which serves as % operation on shift amount.</p>
+<h3 id="3-5-4-Discussion"><a href="#3-5-4-Discussion" class="headerlink" title="3.5.4 Discussion"></a>3.5.4 Discussion</h3><h3 id="3-5-5-Special-Arithmetic-Operations"><a href="#3-5-5-Special-Arithmetic-Operations" class="headerlink" title="3.5.5 Special Arithmetic Operations"></a>3.5.5 Special Arithmetic Operations</h3><p> 128 bits arithmetic operations</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Instruction</th>
+<th>Operand(s)</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>imulq</td>
+<td>S * %rax -&gt; (%rdx + %rax)</td>
+<td>Signed full multiply</td>
+</tr>
+<tr>
+<td>mulq</td>
+<td>S * %rax -&gt; (%rdx + %rax)</td>
+<td>Unsigned full multiply</td>
+</tr>
+<tr>
+<td>cqto</td>
+<td>S</td>
+<td>Convert to oct word with sign bit of %rax</td>
+</tr>
+<tr>
+<td>idivq</td>
+<td>(%rdx + %rax )/ S -&gt; %rax(quotient) and %rdx(remainder)</td>
+<td>Signed divide</td>
+</tr>
+<tr>
+<td>divq</td>
+<td>(%rdx + %rax )/ S -&gt; %rax(quotient) and %rdx(remainder)</td>
+<td>Unsigned divide</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>(Figure 3.12)</p>
+<p>There are imulq for signed and mulq for unsigned respectively, while for 64-bit normal operations, there is only one imul for both signed and unsigned.</p>
+<h2 id="3-6-Control"><a href="#3-6-Control" class="headerlink" title="3.6 Control"></a>3.6 Control</h2><p>alters either control flow or data flow</p>
+<h3 id="3-6-1-Condition-Codes"><a href="#3-6-1-Condition-Codes" class="headerlink" title="3.6.1 Condition Codes"></a>3.6.1 Condition Codes</h3><p> a set of single-bit condition code registers</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Condition code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CF</td>
+<td>Carry flag</td>
+</tr>
+<tr>
+<td>ZF</td>
+<td>Zero flag</td>
+</tr>
+<tr>
+<td>SF</td>
+<td>Sign flag</td>
+</tr>
+<tr>
+<td>OF</td>
+<td>Overflow flag</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>All instructions in Figure 3.10 except leaq cause condition code <strong>to be set</strong>.</p>
+<p>Logical operations set carry and overflow flags to zero. </p>
+<p>Shift operations set carry flag to the last bit shifted out, and overflow flag to zero. </p>
+<p>Inc and dec instructions set the overflow and zero flags, but they leave the carry flag unchanged.</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Instruction</th>
+<th>Based on</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cmp(bwlq) $S_1, S_2$</td>
+<td>$S_2-S_1$</td>
+<td>Compare</td>
+</tr>
+<tr>
+<td>test(bwlq)  $S_1, S_2$</td>
+<td>$S_2 \;\&amp;\; S_1$</td>
+<td>Test</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>(Figure 3.13) These instructions set the condition codes <strong>without</strong> updating any other registers</p>
+<h3 id="3-6-2-Accessing-the-Condition-Codes"><a href="#3-6-2-Accessing-the-Condition-Codes" class="headerlink" title="3.6.2 Accessing the Condition Codes"></a>3.6.2 Accessing the Condition Codes</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Instruction</th>
+<th>Op(s)</th>
+<th>Synonym</th>
+<th>Effect</th>
+<th>Set condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sete</td>
+<td>D</td>
+<td>setz</td>
+<td>D ← ZF</td>
+<td>Equal / zero</td>
+</tr>
+<tr>
+<td>setne</td>
+<td>D</td>
+<td>setnz</td>
+<td>D ← ~ ZF</td>
+<td>Not equal / not zero</td>
+</tr>
+<tr>
+<td>sets</td>
+<td>D</td>
+<td></td>
+<td>D ← SF</td>
+<td>Negative</td>
+</tr>
+<tr>
+<td>setns</td>
+<td>D</td>
+<td></td>
+<td>D ← ~ SF</td>
+<td>Nonnegative</td>
+</tr>
+<tr>
+<td>setg</td>
+<td>D</td>
+<td>setnle</td>
+<td>D ← ~ (SF ^ OF) &amp; ~ZF</td>
+<td>Greater (signed &gt;)</td>
+</tr>
+<tr>
+<td>setge</td>
+<td>D</td>
+<td>setnl</td>
+<td>D ← ~ (SF ^ OF)</td>
+<td>Greater or equal (signed &gt;=)</td>
+</tr>
+<tr>
+<td>setl</td>
+<td>D</td>
+<td>setnge</td>
+<td>D ← SF ^ OF</td>
+<td>Less (signed &lt;)</td>
+</tr>
+<tr>
+<td>setle</td>
+<td>D</td>
+<td>setng</td>
+<td>D ← (SF ^ OF) \</td>
+<td>ZF</td>
+<td>Less or equal (signed &lt;=)</td>
+</tr>
+<tr>
+<td>seta</td>
+<td>D</td>
+<td>setnbe</td>
+<td>D ← ~ CF &amp; ~ZF</td>
+<td>Above (unsigned &gt;)</td>
+</tr>
+<tr>
+<td>setae</td>
+<td>D</td>
+<td>setnb</td>
+<td>D ← ~ CF</td>
+<td>Above or equal (unsigned &gt;=)</td>
+</tr>
+<tr>
+<td>setb</td>
+<td>D</td>
+<td>setnae</td>
+<td>D ← CF</td>
+<td>Below (unsigned &lt;)</td>
+</tr>
+<tr>
+<td>setbe</td>
+<td>D</td>
+<td>setna</td>
+<td>D ← CF \</td>
+<td>ZF</td>
+<td>Below or equal (unsigned &lt;=)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>(Figure 3.14) </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cmp(b, a)</span><br><span class="line"></span><br><span class="line">set(g&#x2F;l&#x2F;e&#x2F;...) </span><br><span class="line"></span><br><span class="line">-&gt; a - b (&gt;&#x2F;&lt;&#x2F;&#x3D;&#x2F;...) 0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">test(b, a)</span><br><span class="line"></span><br><span class="line">set(g&#x2F;l&#x2F;e&#x2F;...) </span><br><span class="line"></span><br><span class="line">-&gt; a (&gt;&#x2F;&lt;&#x2F;&#x3D;&#x2F;...) 0</span><br></pre></td></tr></table></figure>
+<h3 id="3-6-3-Jump-Instructions"><a href="#3-6-3-Jump-Instructions" class="headerlink" title="3.6.3 Jump Instructions"></a>3.6.3 Jump Instructions</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Instruction</th>
+<th>Synonym</th>
+<th>Jump condition</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jmp  <em>Label</em></td>
+<td></td>
+<td>1</td>
+<td>Direct jump</td>
+</tr>
+<tr>
+<td>jmp  <em>*(Memory access operand)</em></td>
+<td></td>
+<td>1</td>
+<td>Indirect jump</td>
+</tr>
+<tr>
+<td>je  <em>Label</em></td>
+<td>jz</td>
+<td>ZF</td>
+<td>Equal / zero</td>
+</tr>
+<tr>
+<td>other jump variants matching set variants…</td>
+<td>…</td>
+<td>…</td>
+<td>All direct…</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="3-6-4-Jump-Instruction-Encodings"><a href="#3-6-4-Jump-Instruction-Encodings" class="headerlink" title="3.6.4 Jump Instruction Encodings"></a>3.6.4 Jump Instruction Encodings</h3><p>PC relative</p>
+<h3 id="3-6-5-Implementing-Conditional-Branches-with-Conditional-Control"><a href="#3-6-5-Implementing-Conditional-Branches-with-Conditional-Control" class="headerlink" title="3.6.5 Implementing Conditional Branches with Conditional Control"></a>3.6.5 Implementing Conditional Branches with Conditional Control</h3><p>jump instruction</p>
+<h3 id="3-6-6-Implementing-Conditional-Branches-with-Conditional-Moves"><a href="#3-6-6-Implementing-Conditional-Branches-with-Conditional-Moves" class="headerlink" title="3.6.6 Implementing Conditional Branches with Conditional Moves"></a>3.6.6 Implementing Conditional Branches with Conditional Moves</h3><p>conditional transfer of control -&gt; conditional transfer of data</p>
+<p>performance, CPU pipeline</p>
+<p>conditional move instruction</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Instruction</th>
+<th>Synonym</th>
+<th>Move condition</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cmove  <em>S(Register/Memory)</em>, <em>R(Register)</em></td>
+<td>cmovz</td>
+<td>ZF</td>
+<td>Equal / zero</td>
+</tr>
+<tr>
+<td>just like set and jmp instructions…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The source and destination values can only  be 16, 32, or 64 bits long, inferred from destination register size.</p>
+<h3 id="3-6-7-Loops"><a href="#3-6-7-Loops" class="headerlink" title="3.6.7 Loops"></a>3.6.7 Loops</h3><p>Do-While</p>
+<p>While:</p>
+<ol>
+<li>jump to middle (-Og)</li>
+<li>guarded do (-O1)</li>
+</ol>
+<p>For</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (init-expr; test-expr; update-expr)</span><br><span class="line">	body-statement</span><br></pre></td></tr></table></figure>
+<p>is equivalent to </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">init-expr;</span><br><span class="line"><span class="keyword">while</span> (test-expr) &#123;</span><br><span class="line">    body-statement</span><br><span class="line">    update-expr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-6-8-Switch-Statements"><a href="#3-6-8-Switch-Statements" class="headerlink" title="3.6.8 Switch Statements"></a>3.6.8 Switch Statements</h3><p>jump table</p>
+<h2 id="3-7-Procedures"><a href="#3-7-Procedures" class="headerlink" title="3.7 Procedures"></a>3.7 Procedures</h2><p>Passing control</p>
+<p>Passing data</p>
+<p>Memory management</p>
+<h3 id="3-7-1-The-Run-Time-Stack"><a href="#3-7-1-The-Run-Time-Stack" class="headerlink" title="3.7.1 The Run-Time Stack"></a>3.7.1 The Run-Time Stack</h3><p>stack frame</p>
+<p><img src="https://camo.githubusercontent.com/316871c640e9c0f04e92a63ee6152add002e25255c4618ccbe4a42b1b5794072/68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f6e455337334866384642705f7a5745683238656c324277615775615950797a6841614155785477674a773d773537382d683933372d6e6f" alt="General stack frame structure" style="zoom: 67%;" /></p>
+<h3 id="3-7-2-Control-Transfer"><a href="#3-7-2-Control-Transfer" class="headerlink" title="3.7.2 Control Transfer"></a>3.7.2 Control Transfer</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Instruction</th>
+<th>Operand</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>call</td>
+<td><em>Label</em></td>
+<td>Procedure call</td>
+</tr>
+<tr>
+<td>call</td>
+<td><em>*Operand</em></td>
+<td>Procedure call</td>
+</tr>
+<tr>
+<td>ret</td>
+<td></td>
+<td>Return from call</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>call instruction pushes the address of next instruction onto the stack and sets the PC to the beginning of called procedure,</p>
+<p>ret instruction pops an address from stack and sets PC to that address.</p>
+<h3 id="3-7-3-Data-Transfer"><a href="#3-7-3-Data-Transfer" class="headerlink" title="3.7.3 Data Transfer"></a>3.7.3 Data Transfer</h3><p>With x86-64, up to six integral (i.e., integer and pointer) arguments can be<br>passed via registers.</p>
+<p>When a function has more than six integral arguments, the other ones are<br>passed on the stack.</p>
+<h3 id="3-7-4-Local-Storage-on-the-Stack"><a href="#3-7-4-Local-Storage-on-the-Stack" class="headerlink" title="3.7.4 Local Storage on the Stack"></a>3.7.4 Local Storage on the Stack</h3><p>local variables</p>
+<h3 id="3-7-5-Local-Storage-in-Registers"><a href="#3-7-5-Local-Storage-in-Registers" class="headerlink" title="3.7.5 Local Storage in Registers"></a>3.7.5 Local Storage in Registers</h3><h3 id="3-7-6-Recursive-Procedures"><a href="#3-7-6-Recursive-Procedures" class="headerlink" title="3.7.6 Recursive Procedures"></a>3.7.6 Recursive Procedures</h3><h2 id="3-8-Array-Allocation-and-Access"><a href="#3-8-Array-Allocation-and-Access" class="headerlink" title="3.8 Array Allocation and Access"></a>3.8 Array Allocation and Access</h2><h3 id="3-8-1-Basic-Principles"><a href="#3-8-1-Basic-Principles" class="headerlink" title="3.8.1 Basic Principles"></a>3.8.1 Basic Principles</h3><h3 id="3-8-2-Pointer-Arithmetic"><a href="#3-8-2-Pointer-Arithmetic" class="headerlink" title="3.8.2 Pointer Arithmetic"></a>3.8.2 Pointer Arithmetic</h3><p>pointer + i  = address + size * i</p>
+<p>A[i] = *(A+i)</p>
+<h3 id="3-8-3-Nested-Arrays"><a href="#3-8-3-Nested-Arrays" class="headerlink" title="3.8.3 Nested Arrays"></a>3.8.3 Nested Arrays</h3><p>array [row][column]</p>
+<p>ordered in memory in row-major order</p>
+<script type="math/tex; mode=display">
+For\; T \; D[R][C];\\
+\&D[i][j] = x_D + L(C * i + j)\\
+(3.1)</script><p><strong>Note:</strong> C * i means j = C</p>
+<h3 id="3-8-4-Fixed-Size-Arrays"><a href="#3-8-4-Fixed-Size-Arrays" class="headerlink" title="3.8.4 Fixed-Size Arrays"></a>3.8.4 Fixed-Size Arrays</h3><h3 id="3-8-5-Variable-Size-Arrays"><a href="#3-8-5-Variable-Size-Arrays" class="headerlink" title="3.8.5 Variable-Size Arrays"></a>3.8.5 Variable-Size Arrays</h3><p>Detect patterns and avoid multiplication of indices in equation 3.1.</p>
+<h2 id="3-9-Heterogeneous-Data-Structures"><a href="#3-9-Heterogeneous-Data-Structures" class="headerlink" title="3.9 Heterogeneous Data Structures"></a>3.9 Heterogeneous Data Structures</h2><h3 id="3-9-1-Structures"><a href="#3-9-1-Structures" class="headerlink" title="3.9.1 Structures"></a>3.9.1 Structures</h3><p>like object (class) in C++ and Java, but does not have methods.</p>
+<h3 id="3-9-2-Unions"><a href="#3-9-2-Unions" class="headerlink" title="3.9.2 Unions"></a>3.9.2 Unions</h3><p>allowing a single object to be referenced according to multiple types</p>
+<h3 id="3-9-3-Data-Alignment"><a href="#3-9-3-Data-Alignment" class="headerlink" title="3.9.3 Data Alignment"></a>3.9.3 Data Alignment</h3><p>any primitive object of K bytes must have an address that is a multiple of K</p>
+<h2 id="3-10-Combining-Control-and-Data-in-Machine-Level-Programs"><a href="#3-10-Combining-Control-and-Data-in-Machine-Level-Programs" class="headerlink" title="3.10 Combining Control and Data in Machine-Level Programs"></a>3.10 Combining Control and Data in Machine-Level Programs</h2><h3 id="3-10-1-Understanding-Pointers"><a href="#3-10-1-Understanding-Pointers" class="headerlink" title="3.10.1 Understanding Pointers"></a>3.10.1 Understanding Pointers</h3><ul>
+<li><p>Pointer types are not part of machine code; they are an abstraction provided by C to help programmers avoid addressing errors.</p>
+</li>
+<li><p>The special NULL (0) value indicates that the pointer does not point anywhere</p>
+</li>
+<li><p>a[3] = *(a+3)</p>
+</li>
+<li><p>Pointers can also point to functions. The value of a function pointer is the address of the first instruction in the machine-code representation of the function.</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> *p)</span></span>;</span><br><span class="line"><span class="keyword">int</span> (*fp)(<span class="keyword">int</span>, <span class="keyword">int</span> *);</span><br><span class="line">fp = fun;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> y = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> result = fp(<span class="number">3</span>, &amp;y);</span><br></pre></td></tr></table></figure>
+<h3 id="3-10-2-Life-in-the-Real-World-Using-the-gdb-Debugger"><a href="#3-10-2-Life-in-the-Real-World-Using-the-gdb-Debugger" class="headerlink" title="3.10.2 Life in the Real World: Using the gdb Debugger"></a>3.10.2 Life in the Real World: Using the gdb Debugger</h3><h3 id="3-10-3-Out-of-Bounds-Memory-References-and-Buffer-Overflow"><a href="#3-10-3-Out-of-Bounds-Memory-References-and-Buffer-Overflow" class="headerlink" title="3.10.3 Out-of-Bounds Memory References and Buffer Overflow"></a>3.10.3 Out-of-Bounds Memory References and Buffer Overflow</h3><h3 id="3-10-4-Thwarting-Buffer-Overflow-Attacks"><a href="#3-10-4-Thwarting-Buffer-Overflow-Attacks" class="headerlink" title="3.10.4 Thwarting Buffer Overflow Attacks"></a>3.10.4 Thwarting Buffer Overflow Attacks</h3><p>Stack Randomization</p>
+<p>Stack Corruption Detection</p>
+<p>Limiting Executable Code Regions</p>
+<h3 id="3-10-5-Supporting-Variable-Size-Stack-Frames"><a href="#3-10-5-Supporting-Variable-Size-Stack-Frames" class="headerlink" title="3.10.5 Supporting Variable-Size Stack Frames"></a>3.10.5 Supporting Variable-Size Stack Frames</h3><p>%rbp</p>
+<p>frame pointer</p>
+<h2 id="3-11-Floating-Point-Code"><a href="#3-11-Floating-Point-Code" class="headerlink" title="3.11 Floating-Point Code"></a>3.11 Floating-Point Code</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>255</th>
+<th>127</th>
+<th>0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%ymm0</td>
+<td>%xmm0</td>
+<td>1st FP arg./Return value</td>
+</tr>
+<tr>
+<td>%ymm1</td>
+<td>%xmm1</td>
+<td>2nd FP argument</td>
+</tr>
+<tr>
+<td>%ymm2</td>
+<td>%xmm2</td>
+<td>3rd FP argument</td>
+</tr>
+<tr>
+<td>%ymm3</td>
+<td>%xmm3</td>
+<td>4th FP argument</td>
+</tr>
+<tr>
+<td>%ymm4</td>
+<td>%xmm4</td>
+<td>5th FP argument</td>
+</tr>
+<tr>
+<td>%ymm5</td>
+<td>%xmm5</td>
+<td>6th FP argument</td>
+</tr>
+<tr>
+<td>%ymm6</td>
+<td>%xmm6</td>
+<td>7th FP argument</td>
+</tr>
+<tr>
+<td>%ymm7</td>
+<td>%xmm7</td>
+<td>8th FP argument</td>
+</tr>
+<tr>
+<td>%ymm8</td>
+<td>%xmm8</td>
+<td>Caller saved</td>
+</tr>
+<tr>
+<td>%ymm9</td>
+<td>%xmm9</td>
+<td>Caller saved</td>
+</tr>
+<tr>
+<td>%ymm10</td>
+<td>%xmm10</td>
+<td>Caller saved</td>
+</tr>
+<tr>
+<td>%ymm11</td>
+<td>%xmm11</td>
+<td>Caller saved</td>
+</tr>
+<tr>
+<td>%ymm12</td>
+<td>%xmm12</td>
+<td>Caller saved</td>
+</tr>
+<tr>
+<td>%ymm13</td>
+<td>%ymm13</td>
+<td>Caller saved</td>
+</tr>
+<tr>
+<td>%ymm14</td>
+<td>%xmm14</td>
+<td>Caller saved</td>
+</tr>
+<tr>
+<td>%ymm15</td>
+<td>%xmm15</td>
+<td>Caller saved</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Figure 3.45</strong> Media registers, which are used to hold floating-point data.</p>
+<h3 id="3-11-1-Floating-Point-Movement-and-Conversion-Operations"><a href="#3-11-1-Floating-Point-Movement-and-Conversion-Operations" class="headerlink" title="3.11.1 Floating-Point Movement and Conversion Operations"></a>3.11.1 Floating-Point Movement and Conversion Operations</h3><p>Those that reference memory are scalar instructions, meaning that they do not alter high-order bits.</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Instruction</th>
+<th>Source</th>
+<th>Destination</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vmovss</td>
+<td>M32</td>
+<td>X</td>
+<td>Move single precision</td>
+</tr>
+<tr>
+<td>vmovss</td>
+<td>X</td>
+<td>M32</td>
+<td>Move single precision</td>
+</tr>
+<tr>
+<td>vmovsd</td>
+<td>M64</td>
+<td>X</td>
+<td>Move double precision</td>
+</tr>
+<tr>
+<td>vmovsd</td>
+<td>X</td>
+<td>M64</td>
+<td>Move double precision</td>
+</tr>
+<tr>
+<td>vmovaps</td>
+<td>X</td>
+<td>X</td>
+<td>Move aligned, packed single precision</td>
+</tr>
+<tr>
+<td>vmovapd</td>
+<td>X</td>
+<td>X</td>
+<td>Move aligned, packed single precision</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>(<strong>Figure 3.46</strong> floating-point movement)</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Instruction</th>
+<th>Source</th>
+<th>Destination</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vcvttss2si</td>
+<td>X/M32</td>
+<td>R32</td>
+<td>Convert with truncation single precision to integer</td>
+</tr>
+<tr>
+<td>vcvttsd2si</td>
+<td>X/M64</td>
+<td>R32</td>
+<td>Convert with truncation double precision to integer</td>
+</tr>
+<tr>
+<td>vcvttss2siq</td>
+<td>X/M32</td>
+<td>R64</td>
+<td>Convert with truncation single precision to quad word integer</td>
+</tr>
+<tr>
+<td>vcvttsd2siq</td>
+<td>X/M64</td>
+<td>R64</td>
+<td>Convert with truncation double precision to quad word integer</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>(<strong>Figure 3.47</strong> floating-point to integer)</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Instruction</th>
+<th>Source 1</th>
+<th>Source 2</th>
+<th>Destination</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vcvtsi2ss</td>
+<td>M32/R32</td>
+<td>X</td>
+<td>X</td>
+<td>Convert integer to single precision</td>
+</tr>
+<tr>
+<td>vcvtsi2sd</td>
+<td>M32/R32</td>
+<td>X</td>
+<td>X</td>
+<td>Convert integer to double precision</td>
+</tr>
+<tr>
+<td>vcvtsi2ssq</td>
+<td>M64/R64</td>
+<td>X</td>
+<td>X</td>
+<td>Convert quad word integer to single precision</td>
+</tr>
+<tr>
+<td>vcvtsi2sdq</td>
+<td>M64/R64</td>
+<td>X</td>
+<td>X</td>
+<td>Convert quad word integer to double precision</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>(<strong>Figure 3.48</strong> integer to floating-point)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vcvtss2sd %xmm0, %xmm0, %xmm0</span><br><span class="line"></span><br><span class="line">vunpcklps %xmm0, %xmm0, %xmm0 </span><br><span class="line">vcvtps2pd %xmm0, %xmm0</span><br></pre></td></tr></table></figure>
+<p>float to double</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vcvtsd2ss %xmm0, %xmm0, %xmm0</span><br><span class="line"></span><br><span class="line">vmovddup %xmm0, %xmm0</span><br><span class="line">vcvtpd2psx %xmm0, %xmm0</span><br></pre></td></tr></table></figure>
+<p>double to float</p>
+<h3 id="3-11-2-Floating-Point-Code-in-Procedures"><a href="#3-11-2-Floating-Point-Code-in-Procedures" class="headerlink" title="3.11.2 Floating-Point Code in Procedures"></a>3.11.2 Floating-Point Code in Procedures</h3><p>register assignments for the arguments</p>
+<h3 id="3-11-3-Floating-Point-Arithmetic-Operations"><a href="#3-11-3-Floating-Point-Arithmetic-Operations" class="headerlink" title="3.11.3 Floating-Point Arithmetic Operations"></a>3.11.3 Floating-Point Arithmetic Operations</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Single</th>
+<th>Double</th>
+<th>Effect</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vaddss</td>
+<td>vaddsd</td>
+<td>D ← S2 + S1<br />Register ← Register/Memory</td>
+<td>Floating-point add</td>
+</tr>
+<tr>
+<td>vsubss</td>
+<td>vsubsd</td>
+<td>D ← S2 − S1</td>
+<td>Floating-point subtract</td>
+</tr>
+<tr>
+<td>vmulss</td>
+<td>vmulsd</td>
+<td>D ← S2 × S1</td>
+<td>Floating-point multiply</td>
+</tr>
+<tr>
+<td>vdivss</td>
+<td>vdivsd</td>
+<td>D ← S2/S1</td>
+<td>Floating-point divide</td>
+</tr>
+<tr>
+<td>vmaxss</td>
+<td>vmaxsd</td>
+<td>D ← max(S2, S1)</td>
+<td>Floating-point maximum</td>
+</tr>
+<tr>
+<td>vminss</td>
+<td>vminsd</td>
+<td>D ← min(S2, S1)</td>
+<td>Floating-point minimum</td>
+</tr>
+<tr>
+<td>sqrtss</td>
+<td>sqrtsd</td>
+<td>D ← $\sqrt {S1}$</td>
+<td>Floating-point square root</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>(<strong>Figure 3.49</strong> 1 or 2 operands and 1 destination)</p>
+<h3 id="3-11-4-Defining-and-Using-Floating-Point-Constants"><a href="#3-11-4-Defining-and-Using-Floating-Point-Constants" class="headerlink" title="3.11.4 Defining and Using Floating-Point Constants"></a>3.11.4 Defining and Using Floating-Point Constants</h3><p> cannot have immediate values as operands</p>
+<p>must allocate and initialize storage for any constant values</p>
+<h3 id="3-11-5-Using-Bitwise-Operations-in-Floating-Point-Code"><a href="#3-11-5-Using-Bitwise-Operations-in-Floating-Point-Code" class="headerlink" title="3.11.5 Using Bitwise Operations in Floating-Point Code"></a>3.11.5 Using Bitwise Operations in Floating-Point Code</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Single</th>
+<th>Double</th>
+<th>Effect</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vxorps</td>
+<td>xorpd</td>
+<td>D ← S2 ^ S1</td>
+<td>Bitwise exclusive-or</td>
+</tr>
+<tr>
+<td>vandps</td>
+<td>andpd</td>
+<td>D ← S2 &amp; S1</td>
+<td>Bitwise and</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>(<strong>Figure 3.50</strong> 3 operands)</p>
+<h3 id="3-11-6-Floating-Point-Comparison-Operations"><a href="#3-11-6-Floating-Point-Comparison-Operations" class="headerlink" title="3.11.6 Floating-Point Comparison Operations"></a>3.11.6 Floating-Point Comparison Operations</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Instruction</th>
+<th>Operand(s)</th>
+<th>Based on</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ucomiss</td>
+<td><em>S</em>1, <em>S</em>2</td>
+<td><em>S</em>2−<em>S</em>1</td>
+<td>Compare single precision</td>
+</tr>
+<tr>
+<td>ucomisd</td>
+<td><em>S</em>1, <em>S</em>2</td>
+<td><em>S</em>2−<em>S</em>1</td>
+<td>Compare double precision</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Ordering S2:S1</th>
+<th>CF</th>
+<th>ZF</th>
+<th>PF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NaN</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>S2 &lt; S1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>S2 = S1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>S2 &gt; S1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="3-11-7-Observations-about-Floating-Point-Code"><a href="#3-11-7-Observations-about-Floating-Point-Code" class="headerlink" title="3.11.7 Observations about Floating-Point Code"></a>3.11.7 Observations about Floating-Point Code</h3><h2 id="Homework"><a href="#Homework" class="headerlink" title="Homework"></a>Homework</h2><p>If you need a struct as returned value when calling a function, you allocate storage for that returned struct on the caller function’s stack frame.</p>
+<p>Address of a struct = address of its first element. (There cannot be padding before the first element)</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (expression) &#123;</span><br><span class="line">    statement1 </span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">    statement2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> =&gt;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    cmp #reverse expression</span><br><span class="line">    jmp Label</span><br><span class="line">    statement1</span><br><span class="line">Label:</span><br><span class="line">	statement2</span><br></pre></td></tr></table></figure>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2021/05/16/CSAPP-C4/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          CSAPP-C4
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2021/04/06/CSAPP-C2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CSAPP-C2</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-Historical-Perspective"><span class="toc-number">1.</span> <span class="toc-text">3.1 Historical Perspective</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-Program-Encodings"><span class="toc-number">2.</span> <span class="toc-text">3.2 Program Encodings</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-Machine-Level-Code"><span class="toc-number">2.1.</span> <span class="toc-text">3.2.1 Machine-Level Code</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-Code-Examples"><span class="toc-number">2.2.</span> <span class="toc-text">3.2.2 Code Examples</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-3-Notes-on-Formatting"><span class="toc-number">2.3.</span> <span class="toc-text">3.2.3 Notes on Formatting</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-Data-Formats"><span class="toc-number">3.</span> <span class="toc-text">3.3 Data Formats</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-Accessing-Information"><span class="toc-number">4.</span> <span class="toc-text">3.4 Accessing Information</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-1-Operand-Specifiers"><span class="toc-number">4.1.</span> <span class="toc-text">3.4.1 Operand Specifiers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-2-Data-Movement-Instructions"><span class="toc-number">4.2.</span> <span class="toc-text">3.4.2 Data Movement Instructions</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Simple-move"><span class="toc-number">4.2.1.</span> <span class="toc-text">Simple move</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Signed-move"><span class="toc-number">4.2.2.</span> <span class="toc-text">Signed move</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-3-Data-Movement-Example"><span class="toc-number">4.3.</span> <span class="toc-text">3.4.3 Data Movement Example</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-4-Pushing-and-Popping-Stack-Data"><span class="toc-number">4.4.</span> <span class="toc-text">3.4.4 Pushing and Popping Stack Data</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5-Arithmetic-and-Logical-Operations"><span class="toc-number">5.</span> <span class="toc-text">3.5 Arithmetic and Logical Operations</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-1-Load-Effective-Address"><span class="toc-number">5.1.</span> <span class="toc-text">3.5.1  Load Effective Address</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-2-Unary-and-Binary-Operations"><span class="toc-number">5.2.</span> <span class="toc-text">3.5.2 Unary and Binary Operations</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-3-Shift-Operations"><span class="toc-number">5.3.</span> <span class="toc-text">3.5.3 Shift Operations</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-4-Discussion"><span class="toc-number">5.4.</span> <span class="toc-text">3.5.4 Discussion</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-5-Special-Arithmetic-Operations"><span class="toc-number">5.5.</span> <span class="toc-text">3.5.5 Special Arithmetic Operations</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-6-Control"><span class="toc-number">6.</span> <span class="toc-text">3.6 Control</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-1-Condition-Codes"><span class="toc-number">6.1.</span> <span class="toc-text">3.6.1 Condition Codes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-2-Accessing-the-Condition-Codes"><span class="toc-number">6.2.</span> <span class="toc-text">3.6.2 Accessing the Condition Codes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-3-Jump-Instructions"><span class="toc-number">6.3.</span> <span class="toc-text">3.6.3 Jump Instructions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-4-Jump-Instruction-Encodings"><span class="toc-number">6.4.</span> <span class="toc-text">3.6.4 Jump Instruction Encodings</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-5-Implementing-Conditional-Branches-with-Conditional-Control"><span class="toc-number">6.5.</span> <span class="toc-text">3.6.5 Implementing Conditional Branches with Conditional Control</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-6-Implementing-Conditional-Branches-with-Conditional-Moves"><span class="toc-number">6.6.</span> <span class="toc-text">3.6.6 Implementing Conditional Branches with Conditional Moves</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-7-Loops"><span class="toc-number">6.7.</span> <span class="toc-text">3.6.7 Loops</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-8-Switch-Statements"><span class="toc-number">6.8.</span> <span class="toc-text">3.6.8 Switch Statements</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-7-Procedures"><span class="toc-number">7.</span> <span class="toc-text">3.7 Procedures</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-7-1-The-Run-Time-Stack"><span class="toc-number">7.1.</span> <span class="toc-text">3.7.1 The Run-Time Stack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-7-2-Control-Transfer"><span class="toc-number">7.2.</span> <span class="toc-text">3.7.2 Control Transfer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-7-3-Data-Transfer"><span class="toc-number">7.3.</span> <span class="toc-text">3.7.3 Data Transfer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-7-4-Local-Storage-on-the-Stack"><span class="toc-number">7.4.</span> <span class="toc-text">3.7.4 Local Storage on the Stack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-7-5-Local-Storage-in-Registers"><span class="toc-number">7.5.</span> <span class="toc-text">3.7.5 Local Storage in Registers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-7-6-Recursive-Procedures"><span class="toc-number">7.6.</span> <span class="toc-text">3.7.6 Recursive Procedures</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-8-Array-Allocation-and-Access"><span class="toc-number">8.</span> <span class="toc-text">3.8 Array Allocation and Access</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-8-1-Basic-Principles"><span class="toc-number">8.1.</span> <span class="toc-text">3.8.1 Basic Principles</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-8-2-Pointer-Arithmetic"><span class="toc-number">8.2.</span> <span class="toc-text">3.8.2 Pointer Arithmetic</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-8-3-Nested-Arrays"><span class="toc-number">8.3.</span> <span class="toc-text">3.8.3 Nested Arrays</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-8-4-Fixed-Size-Arrays"><span class="toc-number">8.4.</span> <span class="toc-text">3.8.4 Fixed-Size Arrays</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-8-5-Variable-Size-Arrays"><span class="toc-number">8.5.</span> <span class="toc-text">3.8.5 Variable-Size Arrays</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-9-Heterogeneous-Data-Structures"><span class="toc-number">9.</span> <span class="toc-text">3.9 Heterogeneous Data Structures</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-9-1-Structures"><span class="toc-number">9.1.</span> <span class="toc-text">3.9.1 Structures</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-9-2-Unions"><span class="toc-number">9.2.</span> <span class="toc-text">3.9.2 Unions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-9-3-Data-Alignment"><span class="toc-number">9.3.</span> <span class="toc-text">3.9.3 Data Alignment</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-10-Combining-Control-and-Data-in-Machine-Level-Programs"><span class="toc-number">10.</span> <span class="toc-text">3.10 Combining Control and Data in Machine-Level Programs</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-10-1-Understanding-Pointers"><span class="toc-number">10.1.</span> <span class="toc-text">3.10.1 Understanding Pointers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-10-2-Life-in-the-Real-World-Using-the-gdb-Debugger"><span class="toc-number">10.2.</span> <span class="toc-text">3.10.2 Life in the Real World: Using the gdb Debugger</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-10-3-Out-of-Bounds-Memory-References-and-Buffer-Overflow"><span class="toc-number">10.3.</span> <span class="toc-text">3.10.3 Out-of-Bounds Memory References and Buffer Overflow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-10-4-Thwarting-Buffer-Overflow-Attacks"><span class="toc-number">10.4.</span> <span class="toc-text">3.10.4 Thwarting Buffer Overflow Attacks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-10-5-Supporting-Variable-Size-Stack-Frames"><span class="toc-number">10.5.</span> <span class="toc-text">3.10.5 Supporting Variable-Size Stack Frames</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-11-Floating-Point-Code"><span class="toc-number">11.</span> <span class="toc-text">3.11 Floating-Point Code</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-11-1-Floating-Point-Movement-and-Conversion-Operations"><span class="toc-number">11.1.</span> <span class="toc-text">3.11.1 Floating-Point Movement and Conversion Operations</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-11-2-Floating-Point-Code-in-Procedures"><span class="toc-number">11.2.</span> <span class="toc-text">3.11.2 Floating-Point Code in Procedures</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-11-3-Floating-Point-Arithmetic-Operations"><span class="toc-number">11.3.</span> <span class="toc-text">3.11.3 Floating-Point Arithmetic Operations</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-11-4-Defining-and-Using-Floating-Point-Constants"><span class="toc-number">11.4.</span> <span class="toc-text">3.11.4 Defining and Using Floating-Point Constants</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-11-5-Using-Bitwise-Operations-in-Floating-Point-Code"><span class="toc-number">11.5.</span> <span class="toc-text">3.11.5 Using Bitwise Operations in Floating-Point Code</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-11-6-Floating-Point-Comparison-Operations"><span class="toc-number">11.6.</span> <span class="toc-text">3.11.6 Floating-Point Comparison Operations</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-11-7-Observations-about-Floating-Point-Code"><span class="toc-number">11.7.</span> <span class="toc-text">3.11.7 Observations about Floating-Point Code</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Homework"><span class="toc-number">12.</span> <span class="toc-text">Homework</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -195,8 +1471,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

@@ -6,15 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2021/4 | Hexo</title>
+  <title>CSAPP-C4 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2021/04/index.html">
+  <meta name="description" content="Chapter 4 Processor ArchitectureThe instructions supported by a particular processor and their byte-level encodings are known as its instruction set architecture (ISA). 4.1 The Y86-64 Instruction Set">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSAPP-C4">
+<meta property="og:url" content="http://example.com/2021/05/16/CSAPP-C4/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Chapter 4 Processor ArchitectureThe instructions supported by a particular processor and their byte-level encodings are known as its instruction set architecture (ISA). 4.1 The Y86-64 Instruction Set">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/leatherpants/cloudimage/main/img/figure4.2.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/leatherpants/cloudimage/main/img/figure4.3.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/leatherpants/cloudimage/main/img/figure4.4.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/leatherpants/cloudimage/main/img/figure4.9.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/leatherpants/cloudimage/main/img/figure-set-membership.gif">
+<meta property="article:published_time" content="2021-05-16T02:27:25.000Z">
+<meta property="article:modified_time" content="2021-05-30T11:25:17.567Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/leatherpants/cloudimage/main/img/figure4.2.gif">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -130,49 +140,643 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-CSAPP-C4" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/06/CSAPP-C2/" class="archive-article-date">
-  	<time datetime="2021-04-05T14:15:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-06</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/06/CSAPP-C2/">CSAPP-C2</a>
+    <h1 class="article-title" itemprop="name">
+      CSAPP-C4
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
+        
+        <a href="/2021/05/16/CSAPP-C4/" class="archive-article-date">
+  	<time datetime="2021-05-16T02:27:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Chapter-4-Processor-Architecture"><a href="#Chapter-4-Processor-Architecture" class="headerlink" title="Chapter 4 Processor Architecture"></a>Chapter 4 Processor Architecture</h1><p>The instructions supported by a particular processor and their byte-level encodings are known as its <em>instruction set architecture</em> (ISA).</p>
+<h2 id="4-1-The-Y86-64-Instruction-Set-Architecture"><a href="#4-1-The-Y86-64-Instruction-Set-Architecture" class="headerlink" title="4.1 The Y86-64 Instruction Set Architecture"></a>4.1 The Y86-64 Instruction Set Architecture</h2><h3 id="4-1-1-Programmer-Visible-State"><a href="#4-1-1-Programmer-Visible-State" class="headerlink" title="4.1.1 Programmer-Visible State"></a>4.1.1 Programmer-Visible State</h3><p>15 registers (no %r15)</p>
+<p>CC: Condition code (ZF, SF, OF)</p>
+<p>PC</p>
+<a id="more"></a>
+<p>Stat: Program status</p>
+<p>DMEM: Memory</p>
+<h3 id="4-1-2-Y86-64-Instructions"><a href="#4-1-2-Y86-64-Instructions" class="headerlink" title="4.1.2 Y86-64 Instructions"></a>4.1.2 Y86-64 Instructions</h3><p><img src="https://raw.githubusercontent.com/leatherpants/cloudimage/main/img/figure4.2.gif" alt="Figure 4.2" style="zoom:50%;" /></p>
+<p>absolute address of <strong>Dest</strong></p>
+<p>8-byte constant word: immediate data / displacement / destination</p>
+<p>rA+rB take <strong>ONE</strong> byte</p>
+<h3 id="4-1-3-Instruction-Encoding"><a href="#4-1-3-Instruction-Encoding" class="headerlink" title="4.1.3 Instruction Encoding"></a>4.1.3 Instruction Encoding</h3><p><img src="https://raw.githubusercontent.com/leatherpants/cloudimage/main/img/figure4.3.gif" alt="Figure4.3" style="zoom:30%;" /></p>
+<p><img src="https://raw.githubusercontent.com/leatherpants/cloudimage/main/img/figure4.4.gif" alt="Figure 4.4" style="zoom:30%;" /></p>
+<h3 id="4-1-4-Y86-64-Exceptions"><a href="#4-1-4-Y86-64-Exceptions" class="headerlink" title="4.1.4 Y86-64 Exceptions"></a>4.1.4 Y86-64 Exceptions</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Name</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>AOK</td>
+<td>Normal operation</td>
+</tr>
+<tr>
+<td>2</td>
+<td>HLT</td>
+<td>halt instruction encountered</td>
+</tr>
+<tr>
+<td>3</td>
+<td>ADR</td>
+<td>Invalid address encountered</td>
+</tr>
+<tr>
+<td>4</td>
+<td>INS</td>
+<td>Invalid instruction encountered</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Figure 4.5</strong> Y86-64 status codes. In our design, the processor halts for any code other<br>than AOK.</p>
+<h3 id="4-1-5-Y86-64-Programs"><a href="#4-1-5-Y86-64-Programs" class="headerlink" title="4.1.5 Y86-64 Programs"></a>4.1.5 Y86-64 Programs</h3><h3 id="4-1-6-Some-Y86-64-Instruction-Details"><a href="#4-1-6-Some-Y86-64-Instruction-Details" class="headerlink" title="4.1.6 Some Y86-64 Instruction Details"></a>4.1.6 Some Y86-64 Instruction Details</h3><p>pushq %rsp will push the old value of the register, or ,say, first push then decrement</p>
+<p>popq %rsp =&gt; mrmovq (%rsp) %rsp</p>
+<p>all is first memory, then stack pointer</p>
+<h2 id="4-2-Logic-Design-and-the-Hardware-Control-Language-HCL"><a href="#4-2-Logic-Design-and-the-Hardware-Control-Language-HCL" class="headerlink" title="4.2 Logic Design and the Hardware Control Language HCL"></a>4.2 Logic Design and the Hardware Control Language HCL</h2><p>Three major components are required to implement a digital system:</p>
+<ol>
+<li><p><strong>combinational logic</strong> to compute functions on the bits, </p>
+</li>
+<li><p><strong>memory elements</strong> to store bits, </p>
+</li>
+<li><p><strong>clock signals</strong> to regulate the updating of the memory elements.</p>
+</li>
+</ol>
+<h3 id="4-2-1-Logic-Gates"><a href="#4-2-1-Logic-Gates" class="headerlink" title="4.2.1 Logic Gates"></a>4.2.1 Logic Gates</h3><p><img src="https://raw.githubusercontent.com/leatherpants/cloudimage/main/img/figure4.9.gif" alt="Figure 4.9" style="zoom:20%;" /></p>
+<p>it is common to see these being used as n-way operations for n &gt; 2.</p>
+<h3 id="4-2-2-Combinational-Circuits-and-HCL-Boolean-Expressions"><a href="#4-2-2-Combinational-Circuits-and-HCL-Boolean-Expressions" class="headerlink" title="4.2.2 Combinational Circuits and HCL Boolean Expressions"></a>4.2.2 Combinational Circuits and HCL Boolean Expressions</h3><p><strong>equal</strong></p>
+<p>bool eq = (a &amp;&amp; b) ||(!a &amp;&amp; !b);</p>
+<p><strong>xor</strong></p>
+<p>bool eq = (!a &amp;&amp; b) ||(a &amp;&amp; !b);</p>
+<p><strong>mux</strong></p>
+<p>bool out = (s &amp;&amp; a) ||(!s &amp;&amp; b);</p>
+<h3 id="4-2-3-Word-Level-Combinational-Circuits-and-HCL-Integer-Expressions"><a href="#4-2-3-Word-Level-Combinational-Circuits-and-HCL-Integer-Expressions" class="headerlink" title="4.2.3 Word-Level Combinational Circuits and HCL Integer Expressions"></a>4.2.3 Word-Level Combinational Circuits and HCL Integer Expressions</h3><p><strong>equal</strong></p>
+<p>bool Eq = (A == B);</p>
+<p><strong>MUX</strong></p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">word Out4 = [</span><br><span class="line">        !s1 &amp;&amp; !s0 	: A; # <span class="number">00</span></span><br><span class="line">        !s1 		: B; # <span class="number">01</span></span><br><span class="line">        !s0 		: C; # <span class="number">10</span></span><br><span class="line">        <span class="number">1</span> 			: D; # <span class="number">11</span></span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p>ALU</p>
+<h3 id="4-2-4-Set-Membership"><a href="#4-2-4-Set-Membership" class="headerlink" title="4.2.4 Set Membership"></a>4.2.4 Set Membership</h3><p><img src="https://raw.githubusercontent.com/leatherpants/cloudimage/main/img/figure-set-membership.gif" alt="mux gate" style="zoom:20%;" /></p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bool s1 = code == <span class="number">2</span> || code == <span class="number">3</span>;</span><br><span class="line">bool s0 = code == <span class="number">1</span> || code == <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">bool s1 = code in &#123; <span class="number">2</span>, <span class="number">3</span> &#125;;</span><br><span class="line">bool s0 = code in &#123; <span class="number">1</span>, <span class="number">3</span> &#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="4-2-5-Memory-and-Clocking"><a href="#4-2-5-Memory-and-Clocking" class="headerlink" title="4.2.5 Memory and Clocking"></a>4.2.5 Memory and Clocking</h3><p>Combinational circuits vs. sequential circuits</p>
+<p>Sequential circuits:</p>
+<ol>
+<li><p>Clock registers ((hardware) registers)- input controlled by clock signals</p>
+</li>
+<li><p>Random access memories (memories)- word selected by addresses</p>
+</li>
+</ol>
+<p>Register file is actually memory, and so-called program registers (in contrast to hardware registers), but serves as hardware registers and controlled by clock signal</p>
+<h2 id="4-3-Sequential-Y86-64-Implementations"><a href="#4-3-Sequential-Y86-64-Implementations" class="headerlink" title="4.3 Sequential Y86-64 Implementations"></a>4.3 Sequential Y86-64 Implementations</h2><h3 id="4-3-1-Organizing-Processing-into-Stages"><a href="#4-3-1-Organizing-Processing-into-Stages" class="headerlink" title="4.3.1 Organizing Processing into Stages"></a>4.3.1 Organizing Processing into Stages</h3><p>1 instruction =&gt; a number of operations / stages:</p>
+<ul>
+<li>Fetch: read instruction and compute PC value (but not set it to PC)</li>
+<li>Decode: read operands from register file (includes %rsp)</li>
+<li>Execute: ALU performs the operation, possibly set condition code (CC)</li>
+<li>Memory: write or read memory</li>
+<li>Write back: write to register</li>
+<li>PC update: set PC to next instruction</li>
+</ul>
+<p><strong>arrange different instructions to fit this general framework</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>OPq rA, rB</th>
+<th>rrmovq rA, rB</th>
+<th>irmovq V, rB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fetch</td>
+<td>icode :ifun ← M1[PC]<br />rA :rB ← M1[PC + 1]<br /><br />valP ← PC + 2</td>
+<td>icode :ifun ← M1[PC]<br />rA :rB ← M1[PC + 1]<br /><br />valP ← PC + 2</td>
+<td>icode :ifun ← M1[PC]<br />rA :rB ← M1[PC + 1]<br />valC ← M8[PC + 2]<br />valP ← PC + 10</td>
+</tr>
+<tr>
+<td>Decode</td>
+<td>valA ← R[rA]<br />valB ← R[rB]</td>
+<td>valA ← R[rA]</td>
+<td></td>
+</tr>
+<tr>
+<td>Execute</td>
+<td>valE ← valB OP valA<br />Set CC</td>
+<td>valE ← 0 + valA</td>
+<td>valE ← 0 + valC</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Write back</td>
+<td>R[rB] ← valE</td>
+<td>R[rB] ← valE</td>
+<td>R[rB] ← valE</td>
+</tr>
+<tr>
+<td>PC update</td>
+<td>PC ← valP</td>
+<td>PC ← valP</td>
+<td>PC ← valP</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>(Figure 4.18)</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>rmmovq rA, D(rB)</th>
+<th>mrmovq D(rB), rA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fetch</td>
+<td>icode :ifun ← M1[PC]<br />rA :rB ← M1[PC + 1]<br />valC ← M8[PC + 2]<br />valP ← PC + 10</td>
+<td>icode :ifun ← M1[PC]<br />rA :rB ← M1[PC + 1]<br />valC ← M8[PC + 2]<br />valP ← PC + 10</td>
+</tr>
+<tr>
+<td>Decode</td>
+<td>valA ← R[rA]<br />valB ← R[rB]</td>
+<td><br />valB ← R[rB]</td>
+</tr>
+<tr>
+<td>Execute</td>
+<td>valE ← valB + valC</td>
+<td>valE ← valB + valC</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>M8[valE] ← valA</td>
+<td>valM ← M8[valE]</td>
+</tr>
+<tr>
+<td>Write back</td>
+<td></td>
+<td><br />R[rA] ← valM</td>
+</tr>
+<tr>
+<td>PC update</td>
+<td>PC ← valP</td>
+<td>PC ← valP</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>(Figure 4.19)</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>pushq rA</th>
+<th>popq rA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fetch</td>
+<td>icode :ifun ← M1[PC]<br />rA :rB ← M1[PC + 1]<br /><br />valP ← PC + 2</td>
+<td>icode :ifun ← M1[PC]<br />rA :rB ← M1[PC + 1]<br /><br />valP ← PC + 2</td>
+</tr>
+<tr>
+<td>Decode</td>
+<td>valA ← R[rA]<br />valB ← R[%rsp]</td>
+<td>valA ← R[%rsp]<br />valB ← R[%rsp]</td>
+</tr>
+<tr>
+<td>Execute</td>
+<td>valE ← valB + (−8)</td>
+<td>valE ← valB + 8</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>M8[valE] ← valA</td>
+<td>valM ← M8[valA]</td>
+</tr>
+<tr>
+<td>Write back</td>
+<td>R[%rsp] ← valE</td>
+<td>R[%rsp] ← valE<br />R[rA] ← valM</td>
+</tr>
+<tr>
+<td>PC update</td>
+<td>PC ← valP</td>
+<td>PC ← valP</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>(Figure 4.20)</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>jXX Dest</th>
+<th>call Dest</th>
+<th>ret</th>
+<th>cmovXX rA, rB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fetch</td>
+<td>icode :ifun ← M1[PC]<br /><br />valC ← M8[PC + 1]<br />valP ← PC + 9</td>
+<td>icode :ifun ← M1[PC]<br /><br />valC ← M8[PC + 1]<br />valP ← PC + 9</td>
+<td>icode :ifun ← M1[PC]<br /><br /><br />valP ← PC + 1</td>
+<td>icode :ifun ← M1[PC]<br/>rA :rB ← M1[PC + 1]<br/><br />valP ← PC + 2</td>
+</tr>
+<tr>
+<td>Decode</td>
+<td></td>
+<td><br />valB ← R[%rsp]</td>
+<td>valA ← R[%rsp] <br />valB ← R[%rsp]</td>
+<td>valA ← R[rA]</td>
+</tr>
+<tr>
+<td>Execute</td>
+<td><br />Cnd ← Cond(CC, ifun)</td>
+<td>valE ← valB + (−8)</td>
+<td>valE ← valB + 8</td>
+<td>valE ← 0 + valA<br/>Cnd ← Cond(CC, ifun)</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td></td>
+<td>M8[valE] ← valP</td>
+<td>valM ← M8[valA]</td>
+<td></td>
+</tr>
+<tr>
+<td>Write back</td>
+<td></td>
+<td>R[%rsp] ← valE</td>
+<td>R[%rsp] ← valE</td>
+<td>if (Cnd) R[rB] ← valE</td>
+</tr>
+<tr>
+<td>PC update</td>
+<td>PC ← Cnd ? valC : valP</td>
+<td>PC ← valC</td>
+<td>PC ← valM</td>
+<td>PC ← valP</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>(Figure 4.21)</p>
+<h3 id="4-3-2-SEQ-Hardware-Structure"><a href="#4-3-2-SEQ-Hardware-Structure" class="headerlink" title="4.3.2 SEQ Hardware Structure"></a>4.3.2 SEQ Hardware Structure</h3><p><strong>ALU:</strong> For integer operations, it performs the specified operation. For other instructions, it serves as an adder<br>to compute an incremented or decremented stack pointer, to compute<br>an effective address, or simply to pass one of its inputs to its outputs by<br>adding zero.</p>
+<p><strong>Figure 4.22、4.23</strong></p>
+<h3 id="4-3-3-SEQ-Timing"><a href="#4-3-3-SEQ-Timing" class="headerlink" title="4.3.3 SEQ Timing"></a>4.3.3 SEQ Timing</h3><p><strong>Components do not need sequencing:</strong></p>
+<ul>
+<li><strong>combinational circuits</strong>: <em>register file (read),  instruction memory</em></li>
+</ul>
+<p><strong>Components need sequencing (clocked):</strong></p>
+<ul>
+<li><strong>clocked registers</strong>: PC, condition code register</li>
+<li><strong>random access memories</strong>: data memory, register file (write), <del>register file (read), instruction memory</del></li>
+</ul>
+<p><strong>In every cycle beginning</strong>, update values of clocked components, </p>
+<p><strong>In the cycle</strong>, update combinational circuits and therefore generate new outputs for clocked components, waiting to be updated.</p>
+<p><strong>PRINCIPLE:</strong>  No reading back</p>
+<h3 id="4-3-4-SEQ-Stage-Implementations"><a href="#4-3-4-SEQ-Stage-Implementations" class="headerlink" title="4.3.4 SEQ Stage Implementations"></a>4.3.4 SEQ Stage Implementations</h3><p>Fetch Stage</p>
+<p>Decode and Write-Back Stages</p>
+<p>Execute Stage</p>
+<p>Memory Stage</p>
+<p>PC Update Stage</p>
+<h2 id="4-4-General-Principles-of-Pipelining"><a href="#4-4-General-Principles-of-Pipelining" class="headerlink" title="4.4 General Principles of Pipelining"></a>4.4 General Principles of Pipelining</h2><h3 id="4-4-1-Computational-Pipelines"><a href="#4-4-1-Computational-Pipelines" class="headerlink" title="4.4.1 Computational Pipelines"></a>4.4.1 Computational Pipelines</h3><h3 id="4-4-2-A-Detailed-Look-at-Pipeline-Operation"><a href="#4-4-2-A-Detailed-Look-at-Pipeline-Operation" class="headerlink" title="4.4.2 A Detailed Look at Pipeline Operation"></a>4.4.2 A Detailed Look at Pipeline Operation</h3><p>Figure 4.35 One clock cycle of pipeline operation</p>
+<h3 id="4-4-3-Limitations-of-Pipelining"><a href="#4-4-3-Limitations-of-Pipelining" class="headerlink" title="4.4.3 Limitations of Pipelining"></a>4.4.3 Limitations of Pipelining</h3><p>Nonuniform Partitioning</p>
+<p>Diminishing Returns of Deep Pipelining</p>
+<h3 id="4-4-4-Pipelining-a-System-with-Feedback"><a href="#4-4-4-Pipelining-a-System-with-Feedback" class="headerlink" title="4.4.4 Pipelining a System with Feedback"></a>4.4.4 Pipelining a System with Feedback</h3><h2 id="4-5-Pipelined-Y86-64-Implementations"><a href="#4-5-Pipelined-Y86-64-Implementations" class="headerlink" title="4.5 Pipelined Y86-64 Implementations"></a>4.5 Pipelined Y86-64 Implementations</h2><h3 id="4-5-1-SEQ-Rearranging-the-Computation-Stages"><a href="#4-5-1-SEQ-Rearranging-the-Computation-Stages" class="headerlink" title="4.5.1 SEQ+: Rearranging the Computation Stages"></a>4.5.1 SEQ+: Rearranging the Computation Stages</h3><p><strong>PC logic:</strong> end of clock cycle =&gt; beginning</p>
+<p><strong>circuit retiming:</strong> to balance delays between different stages</p>
+<h3 id="4-5-2-Inserting-Pipeline-Registers"><a href="#4-5-2-Inserting-Pipeline-Registers" class="headerlink" title="4.5.2 Inserting Pipeline Registers"></a>4.5.2 Inserting Pipeline Registers</h3><h3 id="4-5-3-Rearranging-and-Relabeling-Signals"><a href="#4-5-3-Rearranging-and-Relabeling-Signals" class="headerlink" title="4.5.3 Rearranging and Relabeling Signals"></a>4.5.3 Rearranging and Relabeling Signals</h3><h3 id="4-5-4-Next-PC-Prediction"><a href="#4-5-4-Next-PC-Prediction" class="headerlink" title="4.5.4 Next PC Prediction"></a>4.5.4 Next PC Prediction</h3><h3 id="4-5-5-Pipeline-Hazards"><a href="#4-5-5-Pipeline-Hazards" class="headerlink" title="4.5.5 Pipeline Hazards"></a>4.5.5 Pipeline Hazards</h3><ol>
+<li>data dependencies =&gt; data hazards</li>
+<li>control dependencies =&gt; control hazards</li>
+</ol>
+<p>Avoiding Data Hazards by Stalling (insert bubbles into pipeline registers)</p>
+<p>Avoiding Data Hazards by Forwarding</p>
+<p>Load/Use Data Hazards (load interlock) (combines stalling and forwarding) (mrmovq, popq)</p>
+<p>Avoiding Control Hazards</p>
+<h3 id="4-5-6-Exception-Handling"><a href="#4-5-6-Exception-Handling" class="headerlink" title="4.5.6 Exception Handling"></a>4.5.6 Exception Handling</h3><p>3 internal exceptions:</p>
+<ol>
+<li>halt</li>
+<li>invalid icode and ifun</li>
+<li>invalid address in fetch and memory stages</li>
+</ol>
+<p>subtleties:</p>
+<ol>
+<li>exceptions by multiple instructions simultaneously (report the furthest)</li>
+<li>exceptions canceled due to mispredicted branch</li>
+<li>instruction following the excepting instruction changes program state</li>
+</ol>
+<h3 id="4-5-7-PIPE-Stage-Implementations"><a href="#4-5-7-PIPE-Stage-Implementations" class="headerlink" title="4.5.7 PIPE Stage Implementations"></a>4.5.7 PIPE Stage Implementations</h3><h3 id="4-5-8-Pipeline-Control-Logic"><a href="#4-5-8-Pipeline-Control-Logic" class="headerlink" title="4.5.8 Pipeline Control Logic"></a>4.5.8 Pipeline Control Logic</h3><h4 id="Desired-handlings"><a href="#Desired-handlings" class="headerlink" title="Desired handlings"></a>Desired handlings</h4><p><strong>load/use hazard:</strong> stall 1 cycle</p>
+<p><strong>return:</strong> stall for 3 cycles</p>
+<p><strong>mispredicted branch:</strong> inject bubbles into D and E, causing 2 incorrectly fetched instructions to be canceled, while reads the correct instruction into F</p>
+<p><strong>exception:</strong> in M, (1) disable setting of CC in E, (2) M_bubble, (3) W_stall</p>
+<h4 id="Detecting"><a href="#Detecting" class="headerlink" title="Detecting"></a>Detecting</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Trigger</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Processing ret</td>
+<td>IRET ∈ {D icode<em>,</em> E icode<em>,</em> M icode}</td>
+</tr>
+<tr>
+<td>Load/use hazard</td>
+<td>E_icode ∈ {IMRMOVQ, IPOPQ} &amp;&amp; E dstM ∈ {d srcA, d srcB}</td>
+</tr>
+<tr>
+<td>Mispredicted branch</td>
+<td>E_icode = IJXX &amp;&amp; !e Cnd</td>
+</tr>
+<tr>
+<td>Exception</td>
+<td>m_stat ∈ {SADR, SINS, SHLT} \</td>
+<td>\</td>
+<td>W stat ∈ {SADR, SINS, SHLT}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>(Figure 4.64 Detection conditions for pipeline control logic.)</p>
+<h4 id="Control-mechanisms"><a href="#Control-mechanisms" class="headerlink" title="Control mechanisms"></a>Control mechanisms</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>F</th>
+<th>D</th>
+<th>E</th>
+<th>M</th>
+<th>W</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ret</td>
+<td>stall</td>
+<td>bubble</td>
+<td>normal</td>
+<td>normal</td>
+<td>normal</td>
+</tr>
+<tr>
+<td>Load/use hazard</td>
+<td>stall</td>
+<td>stall</td>
+<td>bubble</td>
+<td>normal</td>
+<td>normal</td>
+</tr>
+<tr>
+<td>Mispredicted branch</td>
+<td>normal</td>
+<td>bubble</td>
+<td>bubble</td>
+<td>normal</td>
+<td>normal</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>(Figure 4.66 Actions for pipeline control logic.)</p>
+<p>BUBBLE: to stop the flow</p>
+<p>STALL: to preserve the state</p>
+<h4 id="Combinations-of-Control-Conditions"><a href="#Combinations-of-Control-Conditions" class="headerlink" title="Combinations of Control Conditions"></a>Combinations of Control Conditions</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>F</th>
+<th>D</th>
+<th>E</th>
+<th>M</th>
+<th>W</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ret</td>
+<td>stall</td>
+<td>bubble</td>
+<td>normal</td>
+<td>normal</td>
+<td>normal</td>
+</tr>
+<tr>
+<td>Mispredicted branch</td>
+<td>normal</td>
+<td>bubble</td>
+<td>bubble</td>
+<td>normal</td>
+<td>normal</td>
+</tr>
+<tr>
+<td>Combination</td>
+<td>stall</td>
+<td>bubble</td>
+<td>bubble</td>
+<td>normal</td>
+<td>normal</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>F</th>
+<th>D</th>
+<th>E</th>
+<th>M</th>
+<th>W</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ret</td>
+<td>stall</td>
+<td>bubble</td>
+<td>normal</td>
+<td>normal</td>
+<td>normal</td>
+</tr>
+<tr>
+<td>Load/use hazard</td>
+<td>stall</td>
+<td>stall</td>
+<td>bubble</td>
+<td>normal</td>
+<td>normal</td>
+</tr>
+<tr>
+<td>Combination</td>
+<td>stall</td>
+<td>stall+bubble</td>
+<td>bubble</td>
+<td>normal</td>
+<td>normal</td>
+</tr>
+<tr>
+<td>Desired</td>
+<td>stall</td>
+<td>stall</td>
+<td>bubble</td>
+<td>normal</td>
+<td>normal</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="Control-Logic-Implementation"><a href="#Control-Logic-Implementation" class="headerlink" title="Control Logic Implementation"></a>Control Logic Implementation</h3><p><strong>Exception Handling</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Caught exception types</th>
+<th>stat flag</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F</td>
+<td>halt / invalid instruction / mem error</td>
+<td>→  stat</td>
+<td>(1)NOP</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>↓</td>
+<td></td>
+</tr>
+<tr>
+<td>M</td>
+<td>mem error</td>
+<td>→m_stat</td>
+<td>(1)set_cc (2)M_bubble</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>↓</td>
+<td></td>
+</tr>
+<tr>
+<td>W</td>
+<td></td>
+<td>W_stat</td>
+<td>(1)set_cc (2)M_bubble (3)W_stall</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="4-5-9-Performance-Analysis"><a href="#4-5-9-Performance-Analysis" class="headerlink" title="4.5.9 Performance Analysis"></a>4.5.9 Performance Analysis</h3><script type="math/tex; mode=display">
+\mathrm{CPI}=\frac{C_{i}+C_{b}}{C_{i}}=1.0+\frac{C_{b}}{C_{i}}\\</script><script type="math/tex; mode=display">
+CPI = 1.0 + lp + mp + rp</script><h3 id="4-5-10-Unfinished-Business"><a href="#4-5-10-Unfinished-Business" class="headerlink" title="4.5.10 Unfinished Business"></a>4.5.10 Unfinished Business</h3>
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2021/05/02/CSAPP-C3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CSAPP-C3</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Chapter-4-Processor-Architecture"><span class="toc-number">1.</span> <span class="toc-text">Chapter 4 Processor Architecture</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-The-Y86-64-Instruction-Set-Architecture"><span class="toc-number">1.1.</span> <span class="toc-text">4.1 The Y86-64 Instruction Set Architecture</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-1-Programmer-Visible-State"><span class="toc-number">1.1.1.</span> <span class="toc-text">4.1.1 Programmer-Visible State</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-2-Y86-64-Instructions"><span class="toc-number">1.1.2.</span> <span class="toc-text">4.1.2 Y86-64 Instructions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-3-Instruction-Encoding"><span class="toc-number">1.1.3.</span> <span class="toc-text">4.1.3 Instruction Encoding</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-4-Y86-64-Exceptions"><span class="toc-number">1.1.4.</span> <span class="toc-text">4.1.4 Y86-64 Exceptions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-5-Y86-64-Programs"><span class="toc-number">1.1.5.</span> <span class="toc-text">4.1.5 Y86-64 Programs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-6-Some-Y86-64-Instruction-Details"><span class="toc-number">1.1.6.</span> <span class="toc-text">4.1.6 Some Y86-64 Instruction Details</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-Logic-Design-and-the-Hardware-Control-Language-HCL"><span class="toc-number">1.2.</span> <span class="toc-text">4.2 Logic Design and the Hardware Control Language HCL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-1-Logic-Gates"><span class="toc-number">1.2.1.</span> <span class="toc-text">4.2.1 Logic Gates</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-2-Combinational-Circuits-and-HCL-Boolean-Expressions"><span class="toc-number">1.2.2.</span> <span class="toc-text">4.2.2 Combinational Circuits and HCL Boolean Expressions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-3-Word-Level-Combinational-Circuits-and-HCL-Integer-Expressions"><span class="toc-number">1.2.3.</span> <span class="toc-text">4.2.3 Word-Level Combinational Circuits and HCL Integer Expressions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-4-Set-Membership"><span class="toc-number">1.2.4.</span> <span class="toc-text">4.2.4 Set Membership</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-5-Memory-and-Clocking"><span class="toc-number">1.2.5.</span> <span class="toc-text">4.2.5 Memory and Clocking</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-Sequential-Y86-64-Implementations"><span class="toc-number">1.3.</span> <span class="toc-text">4.3 Sequential Y86-64 Implementations</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-1-Organizing-Processing-into-Stages"><span class="toc-number">1.3.1.</span> <span class="toc-text">4.3.1 Organizing Processing into Stages</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-2-SEQ-Hardware-Structure"><span class="toc-number">1.3.2.</span> <span class="toc-text">4.3.2 SEQ Hardware Structure</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-3-SEQ-Timing"><span class="toc-number">1.3.3.</span> <span class="toc-text">4.3.3 SEQ Timing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-4-SEQ-Stage-Implementations"><span class="toc-number">1.3.4.</span> <span class="toc-text">4.3.4 SEQ Stage Implementations</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-General-Principles-of-Pipelining"><span class="toc-number">1.4.</span> <span class="toc-text">4.4 General Principles of Pipelining</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-1-Computational-Pipelines"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.4.1 Computational Pipelines</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-2-A-Detailed-Look-at-Pipeline-Operation"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.4.2 A Detailed Look at Pipeline Operation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-3-Limitations-of-Pipelining"><span class="toc-number">1.4.3.</span> <span class="toc-text">4.4.3 Limitations of Pipelining</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-4-Pipelining-a-System-with-Feedback"><span class="toc-number">1.4.4.</span> <span class="toc-text">4.4.4 Pipelining a System with Feedback</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-5-Pipelined-Y86-64-Implementations"><span class="toc-number">1.5.</span> <span class="toc-text">4.5 Pipelined Y86-64 Implementations</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-1-SEQ-Rearranging-the-Computation-Stages"><span class="toc-number">1.5.1.</span> <span class="toc-text">4.5.1 SEQ+: Rearranging the Computation Stages</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-2-Inserting-Pipeline-Registers"><span class="toc-number">1.5.2.</span> <span class="toc-text">4.5.2 Inserting Pipeline Registers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-3-Rearranging-and-Relabeling-Signals"><span class="toc-number">1.5.3.</span> <span class="toc-text">4.5.3 Rearranging and Relabeling Signals</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-4-Next-PC-Prediction"><span class="toc-number">1.5.4.</span> <span class="toc-text">4.5.4 Next PC Prediction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-5-Pipeline-Hazards"><span class="toc-number">1.5.5.</span> <span class="toc-text">4.5.5 Pipeline Hazards</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-6-Exception-Handling"><span class="toc-number">1.5.6.</span> <span class="toc-text">4.5.6 Exception Handling</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-7-PIPE-Stage-Implementations"><span class="toc-number">1.5.7.</span> <span class="toc-text">4.5.7 PIPE Stage Implementations</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-8-Pipeline-Control-Logic"><span class="toc-number">1.5.8.</span> <span class="toc-text">4.5.8 Pipeline Control Logic</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Desired-handlings"><span class="toc-number">1.5.8.1.</span> <span class="toc-text">Desired handlings</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Detecting"><span class="toc-number">1.5.8.2.</span> <span class="toc-text">Detecting</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Control-mechanisms"><span class="toc-number">1.5.8.3.</span> <span class="toc-text">Control mechanisms</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Combinations-of-Control-Conditions"><span class="toc-number">1.5.8.4.</span> <span class="toc-text">Combinations of Control Conditions</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Control-Logic-Implementation"><span class="toc-number">1.5.9.</span> <span class="toc-text">Control Logic Implementation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-9-Performance-Analysis"><span class="toc-number">1.5.10.</span> <span class="toc-text">4.5.9 Performance Analysis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-10-Unfinished-Business"><span class="toc-number">1.5.11.</span> <span class="toc-text">4.5.10 Unfinished Business</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -195,8 +799,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
